@@ -19,6 +19,8 @@
 		97A3B6051474ACC100A08FA4 /* PersonListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97A3B6031474ACC100A08FA4 /* PersonListViewController.xib */; };
 		97A3B65A1474C5FF00A08FA4 /* upset1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 97A3B6581474C5FF00A08FA4 /* upset1.jpg */; };
 		97A3B65B1474C5FF00A08FA4 /* upset2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 97A3B6591474C5FF00A08FA4 /* upset2.jpg */; };
+		97A3B66A1474C72300A08FA4 /* PhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A3B6681474C72300A08FA4 /* PhotoListViewController.m */; };
+		97A3B66B1474C72300A08FA4 /* PhotoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97A3B6691474C72300A08FA4 /* PhotoListViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,9 @@
 		97A3B6031474ACC100A08FA4 /* PersonListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonListViewController.xib; sourceTree = "<group>"; };
 		97A3B6581474C5FF00A08FA4 /* upset1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = upset1.jpg; sourceTree = "<group>"; };
 		97A3B6591474C5FF00A08FA4 /* upset2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = upset2.jpg; sourceTree = "<group>"; };
+		97A3B6671474C72300A08FA4 /* PhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoListViewController.h; sourceTree = "<group>"; };
+		97A3B6681474C72300A08FA4 /* PhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoListViewController.m; sourceTree = "<group>"; };
+		97A3B6691474C72300A08FA4 /* PhotoListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoListViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +69,9 @@
 				97A3B6011474ACC100A08FA4 /* PersonListViewController.h */,
 				97A3B6021474ACC100A08FA4 /* PersonListViewController.m */,
 				97A3B6031474ACC100A08FA4 /* PersonListViewController.xib */,
+				97A3B6671474C72300A08FA4 /* PhotoListViewController.h */,
+				97A3B6681474C72300A08FA4 /* PhotoListViewController.m */,
+				97A3B6691474C72300A08FA4 /* PhotoListViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -173,6 +181,7 @@
 				97A3B6051474ACC100A08FA4 /* PersonListViewController.xib in Resources */,
 				97A3B65A1474C5FF00A08FA4 /* upset1.jpg in Resources */,
 				97A3B65B1474C5FF00A08FA4 /* upset2.jpg in Resources */,
+				97A3B66B1474C72300A08FA4 /* PhotoListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +196,7 @@
 				1D3623260D0F684500981E51 /* decadeAppDelegate.m in Sources */,
 				28193060112F816700ECF9B4 /* decade.xcdatamodeld in Sources */,
 				97A3B6041474ACC100A08FA4 /* PersonListViewController.m in Sources */,
+				97A3B66A1474C72300A08FA4 /* PhotoListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

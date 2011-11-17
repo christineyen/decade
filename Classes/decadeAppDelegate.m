@@ -31,11 +31,17 @@
 													  bundle:[NSBundle mainBundle]];
 	[navController1 pushViewController:personListController animated:NO];
 	
-	UITabBarItem *item = [[UITabBarItem alloc]
+	UITabBarItem *item1 = [[UITabBarItem alloc]
 						  initWithTabBarSystemItem:UITabBarSystemItemContacts
 						  tag:0];
-	navController1.tabBarItem = item;
-	[item release];
+	navController1.tabBarItem = item1;
+	[item1 release];
+
+	UITabBarItem *item2 = [[UITabBarItem alloc]
+						   initWithTabBarSystemItem:UITabBarSystemItemRecents
+						   tag:0];
+	navController2.tabBarItem = item2;
+	[item2 release];
 	
 	[self.window addSubview:tabBarController.view];
     [self.window makeKeyAndVisible];
