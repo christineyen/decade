@@ -20,16 +20,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	tabBarController = [[UITabBarController alloc] init];
-	navController1 = [[UINavigationController alloc] init];
+
+	PersonListViewController *personListController = [[PersonListViewController alloc] init];
+    
+    NSString *thePath = [[NSBundle mainBundle] pathForResource:@"photoDb" ofType:@"plist"];
+    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
+    
+    personListController.photoDb = dict;
+	personListController.title = @"People";
+    [dict release];
+    
+	navController1 = [[UINavigationController alloc] initWithRootViewController:personListController];
 	navController2 = [[UINavigationController alloc] init];
     
     // Override point for customization after application launch.
 	tabBarController.viewControllers = [NSArray arrayWithObjects:navController1, navController2, nil];
-	
-	PersonListViewController *personListController = [[PersonListViewController alloc] 
-													  initWithNibName:@"PersonListViewController"
-													  bundle:[NSBundle mainBundle]];
-	[navController1 pushViewController:personListController animated:NO];
 	
 	UITabBarItem *item1 = [[UITabBarItem alloc]
 						  initWithTabBarSystemItem:UITabBarSystemItemContacts

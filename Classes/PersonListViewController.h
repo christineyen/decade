@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 
 
-@interface PersonListViewController : UIViewController {
-
+@interface PersonListViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource> {
+    IBOutlet UITableView *tableView;
+    NSDictionary *_photoDb;
 }
+@property (retain) NSDictionary *photoDb;
+
+- (IBAction)pushViewController:(id) sender;
 
 @end

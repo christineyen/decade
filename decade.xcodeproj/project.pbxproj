@@ -15,12 +15,22 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
+		9736A9D71476232100BD1D92 /* apples.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9CB1476232100BD1D92 /* apples.jpg */; };
+		9736A9D81476232100BD1D92 /* bananas.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9CC1476232100BD1D92 /* bananas.jpg */; };
+		9736A9D91476232100BD1D92 /* caged.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9CD1476232100BD1D92 /* caged.jpg */; };
+		9736A9DA1476232100BD1D92 /* caged3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9CE1476232100BD1D92 /* caged3.jpg */; };
+		9736A9DB1476232100BD1D92 /* drive.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9CF1476232100BD1D92 /* drive.jpg */; };
+		9736A9DC1476232100BD1D92 /* dust.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9D01476232100BD1D92 /* dust.jpg */; };
+		9736A9DD1476232100BD1D92 /* enjoy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9D11476232100BD1D92 /* enjoy.jpg */; };
+		9736A9DE1476232100BD1D92 /* eyes.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9D21476232100BD1D92 /* eyes.jpg */; };
+		9736A9DF1476232100BD1D92 /* fall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9D31476232100BD1D92 /* fall.jpg */; };
+		9736A9E01476232100BD1D92 /* forestdark.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9D41476232100BD1D92 /* forestdark.jpg */; };
+		9736A9E11476232100BD1D92 /* forestlight.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9D51476232100BD1D92 /* forestlight.jpg */; };
+		9736A9E21476232100BD1D92 /* going.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9D61476232100BD1D92 /* going.jpg */; };
+		9736A9E51476234A00BD1D92 /* photoDb.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9E41476234A00BD1D92 /* photoDb.plist */; };
 		97A3B6041474ACC100A08FA4 /* PersonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A3B6021474ACC100A08FA4 /* PersonListViewController.m */; };
 		97A3B6051474ACC100A08FA4 /* PersonListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97A3B6031474ACC100A08FA4 /* PersonListViewController.xib */; };
-		97A3B65A1474C5FF00A08FA4 /* upset1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 97A3B6581474C5FF00A08FA4 /* upset1.jpg */; };
-		97A3B65B1474C5FF00A08FA4 /* upset2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 97A3B6591474C5FF00A08FA4 /* upset2.jpg */; };
-		97A3B66A1474C72300A08FA4 /* PhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A3B6681474C72300A08FA4 /* PhotoListViewController.m */; };
-		97A3B66B1474C72300A08FA4 /* PhotoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97A3B6691474C72300A08FA4 /* PhotoListViewController.xib */; };
+		97E361BD14771F9D001FCE37 /* PhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E361BC14771F9D001FCE37 /* PhotoListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,14 +46,24 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* decade_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = decade_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* decade-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "decade-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		9736A9CB1476232100BD1D92 /* apples.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = apples.jpg; path = Resources/apples.jpg; sourceTree = "<group>"; };
+		9736A9CC1476232100BD1D92 /* bananas.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = bananas.jpg; path = Resources/bananas.jpg; sourceTree = "<group>"; };
+		9736A9CD1476232100BD1D92 /* caged.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = caged.jpg; path = Resources/caged.jpg; sourceTree = "<group>"; };
+		9736A9CE1476232100BD1D92 /* caged3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = caged3.jpg; path = Resources/caged3.jpg; sourceTree = "<group>"; };
+		9736A9CF1476232100BD1D92 /* drive.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = drive.jpg; path = Resources/drive.jpg; sourceTree = "<group>"; };
+		9736A9D01476232100BD1D92 /* dust.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = dust.jpg; path = Resources/dust.jpg; sourceTree = "<group>"; };
+		9736A9D11476232100BD1D92 /* enjoy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = enjoy.jpg; path = Resources/enjoy.jpg; sourceTree = "<group>"; };
+		9736A9D21476232100BD1D92 /* eyes.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = eyes.jpg; path = Resources/eyes.jpg; sourceTree = "<group>"; };
+		9736A9D31476232100BD1D92 /* fall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = fall.jpg; path = Resources/fall.jpg; sourceTree = "<group>"; };
+		9736A9D41476232100BD1D92 /* forestdark.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = forestdark.jpg; path = Resources/forestdark.jpg; sourceTree = "<group>"; };
+		9736A9D51476232100BD1D92 /* forestlight.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = forestlight.jpg; path = Resources/forestlight.jpg; sourceTree = "<group>"; };
+		9736A9D61476232100BD1D92 /* going.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = going.jpg; path = Resources/going.jpg; sourceTree = "<group>"; };
+		9736A9E41476234A00BD1D92 /* photoDb.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = photoDb.plist; sourceTree = "<group>"; };
 		97A3B6011474ACC100A08FA4 /* PersonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonListViewController.h; sourceTree = "<group>"; };
 		97A3B6021474ACC100A08FA4 /* PersonListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonListViewController.m; sourceTree = "<group>"; };
 		97A3B6031474ACC100A08FA4 /* PersonListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonListViewController.xib; sourceTree = "<group>"; };
-		97A3B6581474C5FF00A08FA4 /* upset1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = upset1.jpg; sourceTree = "<group>"; };
-		97A3B6591474C5FF00A08FA4 /* upset2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = upset2.jpg; sourceTree = "<group>"; };
-		97A3B6671474C72300A08FA4 /* PhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoListViewController.h; sourceTree = "<group>"; };
-		97A3B6681474C72300A08FA4 /* PhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoListViewController.m; sourceTree = "<group>"; };
-		97A3B6691474C72300A08FA4 /* PhotoListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoListViewController.xib; sourceTree = "<group>"; };
+		97E361BB14771F9D001FCE37 /* PhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoListViewController.h; sourceTree = "<group>"; };
+		97E361BC14771F9D001FCE37 /* PhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,9 +89,8 @@
 				97A3B6011474ACC100A08FA4 /* PersonListViewController.h */,
 				97A3B6021474ACC100A08FA4 /* PersonListViewController.m */,
 				97A3B6031474ACC100A08FA4 /* PersonListViewController.xib */,
-				97A3B6671474C72300A08FA4 /* PhotoListViewController.h */,
-				97A3B6681474C72300A08FA4 /* PhotoListViewController.m */,
-				97A3B6691474C72300A08FA4 /* PhotoListViewController.xib */,
+				97E361BB14771F9D001FCE37 /* PhotoListViewController.h */,
+				97E361BC14771F9D001FCE37 /* PhotoListViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -108,11 +127,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				97A3B6581474C5FF00A08FA4 /* upset1.jpg */,
-				97A3B6591474C5FF00A08FA4 /* upset2.jpg */,
+				9736A9E31476233000BD1D92 /* photos */,
 				2819305F112F816700ECF9B4 /* decade.xcdatamodeld */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* decade-Info.plist */,
+				9736A9E41476234A00BD1D92 /* photoDb.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -126,6 +145,25 @@
 				28D801B30F44B63D00FB423F /* CoreData.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9736A9E31476233000BD1D92 /* photos */ = {
+			isa = PBXGroup;
+			children = (
+				9736A9CB1476232100BD1D92 /* apples.jpg */,
+				9736A9CC1476232100BD1D92 /* bananas.jpg */,
+				9736A9CD1476232100BD1D92 /* caged.jpg */,
+				9736A9CE1476232100BD1D92 /* caged3.jpg */,
+				9736A9CF1476232100BD1D92 /* drive.jpg */,
+				9736A9D01476232100BD1D92 /* dust.jpg */,
+				9736A9D11476232100BD1D92 /* enjoy.jpg */,
+				9736A9D21476232100BD1D92 /* eyes.jpg */,
+				9736A9D31476232100BD1D92 /* fall.jpg */,
+				9736A9D41476232100BD1D92 /* forestdark.jpg */,
+				9736A9D51476232100BD1D92 /* forestlight.jpg */,
+				9736A9D61476232100BD1D92 /* going.jpg */,
+			);
+			name = photos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,9 +217,19 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				97A3B6051474ACC100A08FA4 /* PersonListViewController.xib in Resources */,
-				97A3B65A1474C5FF00A08FA4 /* upset1.jpg in Resources */,
-				97A3B65B1474C5FF00A08FA4 /* upset2.jpg in Resources */,
-				97A3B66B1474C72300A08FA4 /* PhotoListViewController.xib in Resources */,
+				9736A9D71476232100BD1D92 /* apples.jpg in Resources */,
+				9736A9D81476232100BD1D92 /* bananas.jpg in Resources */,
+				9736A9D91476232100BD1D92 /* caged.jpg in Resources */,
+				9736A9DA1476232100BD1D92 /* caged3.jpg in Resources */,
+				9736A9DB1476232100BD1D92 /* drive.jpg in Resources */,
+				9736A9DC1476232100BD1D92 /* dust.jpg in Resources */,
+				9736A9DD1476232100BD1D92 /* enjoy.jpg in Resources */,
+				9736A9DE1476232100BD1D92 /* eyes.jpg in Resources */,
+				9736A9DF1476232100BD1D92 /* fall.jpg in Resources */,
+				9736A9E01476232100BD1D92 /* forestdark.jpg in Resources */,
+				9736A9E11476232100BD1D92 /* forestlight.jpg in Resources */,
+				9736A9E21476232100BD1D92 /* going.jpg in Resources */,
+				9736A9E51476234A00BD1D92 /* photoDb.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,7 +244,7 @@
 				1D3623260D0F684500981E51 /* decadeAppDelegate.m in Sources */,
 				28193060112F816700ECF9B4 /* decade.xcdatamodeld in Sources */,
 				97A3B6041474ACC100A08FA4 /* PersonListViewController.m in Sources */,
-				97A3B66A1474C72300A08FA4 /* PhotoListViewController.m in Sources */,
+				97E361BD14771F9D001FCE37 /* PhotoListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,7 +261,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = decade_Prefix.pch;
 				INFOPLIST_FILE = "decade-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = decade;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -225,7 +275,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = decade_Prefix.pch;
 				INFOPLIST_FILE = "decade-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = decade;
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
