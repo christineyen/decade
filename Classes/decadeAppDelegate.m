@@ -31,6 +31,7 @@
     [db release];
     
 	navController1 = [[UINavigationController alloc] initWithRootViewController:personListController];
+    navController1.navigationBar.translucent = YES;
 	navController2 = [[UINavigationController alloc] init];
     
     // Override point for customization after application launch.

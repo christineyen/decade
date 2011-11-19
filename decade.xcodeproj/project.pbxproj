@@ -32,6 +32,8 @@
 		97E361BD14771F9D001FCE37 /* PhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E361BC14771F9D001FCE37 /* PhotoListViewController.m */; };
 		97E361BF14772DE1001FCE37 /* Photos.plist in Resources */ = {isa = PBXBuildFile; fileRef = 97E361BE14772DE1001FCE37 /* Photos.plist */; };
 		97E361C1147730A3001FCE37 /* paper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 97E361C0147730A3001FCE37 /* paper.jpg */; };
+		97E361C8147739C9001FCE37 /* PhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E361C6147739C8001FCE37 /* PhotoDetailViewController.m */; };
+		97E361C9147739C9001FCE37 /* PhotoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97E361C7147739C8001FCE37 /* PhotoDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +68,9 @@
 		97E361BC14771F9D001FCE37 /* PhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoListViewController.m; sourceTree = "<group>"; };
 		97E361BE14772DE1001FCE37 /* Photos.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Photos.plist; path = Classes/Photos.plist; sourceTree = "<group>"; };
 		97E361C0147730A3001FCE37 /* paper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = paper.jpg; path = Resources/paper.jpg; sourceTree = "<group>"; };
+		97E361C5147739C8001FCE37 /* PhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailViewController.h; sourceTree = "<group>"; };
+		97E361C6147739C8001FCE37 /* PhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDetailViewController.m; sourceTree = "<group>"; };
+		97E361C7147739C8001FCE37 /* PhotoDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +98,9 @@
 				97A3B6031474ACC100A08FA4 /* PersonListViewController.xib */,
 				97E361BB14771F9D001FCE37 /* PhotoListViewController.h */,
 				97E361BC14771F9D001FCE37 /* PhotoListViewController.m */,
+				97E361C5147739C8001FCE37 /* PhotoDetailViewController.h */,
+				97E361C6147739C8001FCE37 /* PhotoDetailViewController.m */,
+				97E361C7147739C8001FCE37 /* PhotoDetailViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -234,6 +242,7 @@
 				9736A9E21476232100BD1D92 /* going.jpg in Resources */,
 				97E361BF14772DE1001FCE37 /* Photos.plist in Resources */,
 				97E361C1147730A3001FCE37 /* paper.jpg in Resources */,
+				97E361C9147739C9001FCE37 /* PhotoDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +258,7 @@
 				28193060112F816700ECF9B4 /* decade.xcdatamodeld in Sources */,
 				97A3B6041474ACC100A08FA4 /* PersonListViewController.m in Sources */,
 				97E361BD14771F9D001FCE37 /* PhotoListViewController.m in Sources */,
+				97E361C8147739C9001FCE37 /* PhotoDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

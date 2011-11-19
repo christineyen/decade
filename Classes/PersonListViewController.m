@@ -44,8 +44,7 @@
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%d Photos", [photos count]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.imageView.image = [UIImage imageNamed:[photos objectAtIndex:0]];
-//    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
-    cell.imageView.contentMode = UIViewContentModeScaleToFill;
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     
     return cell;
 }

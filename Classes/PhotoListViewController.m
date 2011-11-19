@@ -7,6 +7,7 @@
 //
 
 #import "PhotoListViewController.h"
+#import "PhotoDetailViewController.h"
 
 
 @implementation PhotoListViewController
@@ -71,6 +72,7 @@
     [super viewDidDisappear:animated];
 }
 
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -97,6 +99,7 @@
 
     cell.textLabel.text = photo;
     cell.imageView.image = [UIImage imageNamed:photo];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
     return cell;
 }
@@ -144,14 +147,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+
+    PhotoDetailViewController *photoViewController = [[PhotoDetailViewController alloc] init];
+    photoViewController.photoName = [[self.person objectForKey:@"Photos"]
+                                     objectAtIndex:indexPath.row];
+    photoViewController.wantsFullScreenLayout = YES;
+    [self.navigationController pushViewController:photoViewController animated:YES];
+
+    [photoViewController release];
 }
 
 @end
