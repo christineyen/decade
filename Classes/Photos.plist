@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Photos</key>
+		<array>
+			<string>enjoy.jpg</string>
+			<string>eyes.jpg</string>
+			<string>fall.jpg</string>
+			<string>forestdark.jpg</string>
+			<string>forestlight.jpg</string>
+			<string>going.jpg</string>
+			<string>paper.jpg</string>
+		</array>
+		<key>Name</key>
+		<string>Goofy</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Mickey</string>
+		<key>Photos</key>
+		<array>
+			<string>apples.jpg</string>
+			<string>bananas.jpg</string>
+			<string>caged.jpg</string>
+			<string>caged3.jpg</string>
+			<string>drive.jpg</string>
+			<string>dust.jpg</string>
+		</array>
+	</dict>
+</array>
+</plist>

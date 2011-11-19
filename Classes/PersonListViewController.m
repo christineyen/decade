@@ -31,9 +31,20 @@
     static NSString *MyIdentifier = @"MyIdentifier";
     UITableViewCell *cell = [view dequeueReusableCellWithIdentifier:MyIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc]
+                 initWithStyle:UITableViewCellStyleSubtitle
+                 reuseIdentifier:MyIdentifier]
+                autorelease];
     }
-    cell.textLabel.text = @"TEXT HERE";
+
+    NSDictionary *person = [self.photoDb objectAtIndex:indexPath.row];
+    NSArray *photos = [person objectForKey:@"Photos"];
+
+    cell.textLabel.text = [person objectForKey:@"Name"];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d Photos", [photos count]];
+    cell.imageView.image = [UIImage imageNamed:[photos objectAtIndex:0]];
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    
     return cell;
 }
 @end

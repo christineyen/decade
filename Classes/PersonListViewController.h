@@ -11,9 +11,9 @@
 
 @interface PersonListViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableView *tableView;
-    NSDictionary *_photoDb;
+    NSArray *_photoDb;
 }
-@property (retain) NSDictionary *photoDb;
+@property (retain) NSArray *photoDb;
 
 - (IBAction)pushViewController:(id) sender;
 

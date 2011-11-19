@@ -23,12 +23,12 @@
 
 	PersonListViewController *personListController = [[PersonListViewController alloc] init];
     
-    NSString *thePath = [[NSBundle mainBundle] pathForResource:@"photoDb" ofType:@"plist"];
-    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
+    NSString *thePath = [[NSBundle mainBundle] pathForResource:@"Photos" ofType:@"plist"];
+    NSArray *db = [[NSArray alloc] initWithContentsOfFile:thePath];
     
-    personListController.photoDb = dict;
+    personListController.photoDb = db;
 	personListController.title = @"People";
-    [dict release];
+    [db release];
     
 	navController1 = [[UINavigationController alloc] initWithRootViewController:personListController];
 	navController2 = [[UINavigationController alloc] init];

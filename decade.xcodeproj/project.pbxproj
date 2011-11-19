@@ -27,10 +27,11 @@
 		9736A9E01476232100BD1D92 /* forestdark.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9D41476232100BD1D92 /* forestdark.jpg */; };
 		9736A9E11476232100BD1D92 /* forestlight.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9D51476232100BD1D92 /* forestlight.jpg */; };
 		9736A9E21476232100BD1D92 /* going.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9D61476232100BD1D92 /* going.jpg */; };
-		9736A9E51476234A00BD1D92 /* photoDb.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9E41476234A00BD1D92 /* photoDb.plist */; };
 		97A3B6041474ACC100A08FA4 /* PersonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A3B6021474ACC100A08FA4 /* PersonListViewController.m */; };
 		97A3B6051474ACC100A08FA4 /* PersonListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97A3B6031474ACC100A08FA4 /* PersonListViewController.xib */; };
 		97E361BD14771F9D001FCE37 /* PhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E361BC14771F9D001FCE37 /* PhotoListViewController.m */; };
+		97E361BF14772DE1001FCE37 /* Photos.plist in Resources */ = {isa = PBXBuildFile; fileRef = 97E361BE14772DE1001FCE37 /* Photos.plist */; };
+		97E361C1147730A3001FCE37 /* paper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 97E361C0147730A3001FCE37 /* paper.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,12 +59,13 @@
 		9736A9D41476232100BD1D92 /* forestdark.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = forestdark.jpg; path = Resources/forestdark.jpg; sourceTree = "<group>"; };
 		9736A9D51476232100BD1D92 /* forestlight.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = forestlight.jpg; path = Resources/forestlight.jpg; sourceTree = "<group>"; };
 		9736A9D61476232100BD1D92 /* going.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = going.jpg; path = Resources/going.jpg; sourceTree = "<group>"; };
-		9736A9E41476234A00BD1D92 /* photoDb.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = photoDb.plist; sourceTree = "<group>"; };
 		97A3B6011474ACC100A08FA4 /* PersonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonListViewController.h; sourceTree = "<group>"; };
 		97A3B6021474ACC100A08FA4 /* PersonListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonListViewController.m; sourceTree = "<group>"; };
 		97A3B6031474ACC100A08FA4 /* PersonListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonListViewController.xib; sourceTree = "<group>"; };
 		97E361BB14771F9D001FCE37 /* PhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoListViewController.h; sourceTree = "<group>"; };
 		97E361BC14771F9D001FCE37 /* PhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoListViewController.m; sourceTree = "<group>"; };
+		97E361BE14772DE1001FCE37 /* Photos.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Photos.plist; path = Classes/Photos.plist; sourceTree = "<group>"; };
+		97E361C0147730A3001FCE37 /* paper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = paper.jpg; path = Resources/paper.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,11 +129,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				97E361BE14772DE1001FCE37 /* Photos.plist */,
 				9736A9E31476233000BD1D92 /* photos */,
 				2819305F112F816700ECF9B4 /* decade.xcdatamodeld */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* decade-Info.plist */,
-				9736A9E41476234A00BD1D92 /* photoDb.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -150,6 +152,7 @@
 		9736A9E31476233000BD1D92 /* photos */ = {
 			isa = PBXGroup;
 			children = (
+				97E361C0147730A3001FCE37 /* paper.jpg */,
 				9736A9CB1476232100BD1D92 /* apples.jpg */,
 				9736A9CC1476232100BD1D92 /* bananas.jpg */,
 				9736A9CD1476232100BD1D92 /* caged.jpg */,
@@ -229,7 +232,8 @@
 				9736A9E01476232100BD1D92 /* forestdark.jpg in Resources */,
 				9736A9E11476232100BD1D92 /* forestlight.jpg in Resources */,
 				9736A9E21476232100BD1D92 /* going.jpg in Resources */,
-				9736A9E51476234A00BD1D92 /* photoDb.plist in Resources */,
+				97E361BF14772DE1001FCE37 /* Photos.plist in Resources */,
+				97E361C1147730A3001FCE37 /* paper.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
