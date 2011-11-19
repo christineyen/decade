@@ -8,12 +8,29 @@
 
 #import "decadeAppDelegate.h"
 #import "PersonListViewController.h"
+#import "PhotoListViewController.h"
 
 
 @implementation decadeAppDelegate
 
 @synthesize window;
 
+- (NSDictionary *)fakeRecentsDb:(NSArray *)peopleDb {
+
+    NSMutableArray *allPhotos = [[NSMutableArray alloc] init];
+    for (NSDictionary *person in peopleDb) {
+        [allPhotos addObjectsFromArray:[person objectForKey:@"Photos"]];
+    }
+
+    NSDictionary *allPhotosDb = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 @"All Photos",
+                                 @"Name",
+                                 allPhotos,
+                                 @"Photos",
+                                 nil];
+    [allPhotos release];
+    return allPhotosDb;
+}
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -21,22 +38,30 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	tabBarController = [[UITabBarController alloc] init];
 
+    // Set up Contacts tab
 	PersonListViewController *personListController = [[PersonListViewController alloc] init];
-    
+
     NSString *thePath = [[NSBundle mainBundle] pathForResource:@"Photos" ofType:@"plist"];
     NSArray *db = [[NSArray alloc] initWithContentsOfFile:thePath];
-    
+
     personListController.photoDb = db;
 	personListController.title = @"People";
-    [db release];
-    
+
 	navController1 = [[UINavigationController alloc] initWithRootViewController:personListController];
     navController1.navigationBar.translucent = YES;
-	navController2 = [[UINavigationController alloc] init];
-    
+
+
+    // Set up Recents tab
+    PhotoListViewController *fakeRecentsController = [[PhotoListViewController alloc] init];
+    fakeRecentsController.person = [self fakeRecentsDb:db];
+    fakeRecentsController.title = @"Recents";
+
+	navController2 = [[UINavigationController alloc] initWithRootViewController:fakeRecentsController];
+
+
     // Override point for customization after application launch.
 	tabBarController.viewControllers = [NSArray arrayWithObjects:navController1, navController2, nil];
-	
+
 	UITabBarItem *item1 = [[UITabBarItem alloc]
 						  initWithTabBarSystemItem:UITabBarSystemItemContacts
 						  tag:0];
@@ -52,6 +77,8 @@
 	[self.window addSubview:tabBarController.view];
     [self.window makeKeyAndVisible];
 	
+    [db release];
+    [fakeRecentsController release];
 	[personListController release];
     
     return YES;
