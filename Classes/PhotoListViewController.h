@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PhotoListViewController : UITableViewController
+@interface PhotoListViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource> {
+    NSDictionary *_person;
+}
 
-@property (retain) NSArray *photos;
+@property (retain) NSDictionary *person;
 @end

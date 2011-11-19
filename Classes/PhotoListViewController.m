@@ -10,7 +10,7 @@
 
 
 @implementation PhotoListViewController
-@synthesize photos;
+@synthesize person=_person;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -33,6 +33,8 @@
 
 - (void)viewDidLoad
 {
+    self.title = [self.person objectForKey:@"Name"];
+
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -77,31 +79,25 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [[self.person objectForKey:@"Photos"] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    
-    // Configure the cell...
-    
+
+    NSString *photo = [[self.person objectForKey:@"Photos"] objectAtIndex:indexPath.row];
+
+    cell.textLabel.text = photo;
+    cell.imageView.image = [UIImage imageNamed:photo];
+
     return cell;
 }
 

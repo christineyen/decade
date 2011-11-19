@@ -42,9 +42,21 @@
 
     cell.textLabel.text = [person objectForKey:@"Name"];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%d Photos", [photos count]];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.imageView.image = [UIImage imageNamed:[photos objectAtIndex:0]];
-    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+//    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    cell.imageView.contentMode = UIViewContentModeScaleToFill;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)view didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [view deselectRowAtIndexPath:indexPath animated:NO];
+
+    PhotoListViewController *photoViewController = [[PhotoListViewController alloc] init];
+    photoViewController.person = [self.photoDb objectAtIndex:indexPath.row];
+
+    [self.navigationController pushViewController:photoViewController animated:YES];
+    [photoViewController release];
 }
 @end
