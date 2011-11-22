@@ -85,6 +85,7 @@
 	PersonListViewController *personListController = [[PersonListViewController alloc] init];
     personListController.fetchedResultsController = [fetcher fetchedResultsControllerForEntity:@"Person"
                                                                                  withPredicate:nil];
+    personListController.fetcher = fetcher;
 	personListController.title = @"People";
 
 	navController1 = [[UINavigationController alloc] initWithRootViewController:personListController];
@@ -93,7 +94,10 @@
 
     // Set up Recents tab
     PhotoListViewController *fakeRecentsController = [[PhotoListViewController alloc] init];
-    fakeRecentsController.person =  [[[NSDictionary alloc] init] autorelease];
+
+    fakeRecentsController.fetchedResultsController = [fetcher fetchedResultsControllerForEntity:@"Photo"
+                                                                                  withPredicate:nil];
+    fakeRecentsController.fetcher = fetcher;
     fakeRecentsController.title = @"Recents";
 
 	navController2 = [[UINavigationController alloc] initWithRootViewController:fakeRecentsController];

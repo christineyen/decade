@@ -14,16 +14,7 @@
 
 @implementation PersonListViewController
 @synthesize fetchedResultsController=_fetchedResultsController;
-
-- (IBAction)pushViewController:(id) sender {
-	PhotoListViewController *photoListController = [[PhotoListViewController alloc] init];
-	photoListController.title = @"Photo List";
-
-	[self.navigationController pushViewController:photoListController animated:YES];
-	[photoListController release];
-}
-
-
+@synthesize fetcher;
 
 #pragma mark - View lifecycle
 
@@ -102,7 +93,13 @@
     [view deselectRowAtIndexPath:indexPath animated:NO];
 
     PhotoListViewController *photoViewController = [[PhotoListViewController alloc] init];
-    photoViewController.person = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Person *person = [self.fetchedResultsController objectAtIndexPath:indexPath];
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"person.name like %@", person.name];
+
+    photoViewController.fetchedResultsController = [fetcher fetchedResultsControllerForEntity:@"Photo"
+                                                                                withPredicate:predicate];
+    photoViewController.fetcher = fetcher;
 
     [self.navigationController pushViewController:photoViewController animated:YES];
     [photoViewController release];

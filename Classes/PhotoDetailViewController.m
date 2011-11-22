@@ -9,7 +9,7 @@
 #import "PhotoDetailViewController.h"
 
 @implementation PhotoDetailViewController
-@synthesize photoName=_photoName;
+@synthesize photo=_photo;
 
 - (void)toggleNavigationBar:(BOOL)hidden {
     [UIView beginAnimations:nil context:NULL];
@@ -33,8 +33,8 @@
 {
     [super viewDidLoad];
 
-    self.title = self.photoName;
-    imageView.image = [UIImage imageNamed:self.photoName];
+    self.title = self.photo.name;
+    imageView.image = [UIImage imageNamed:self.photo.path];
     imageView.contentMode = UIViewContentModeScaleAspectFill;
 }
 

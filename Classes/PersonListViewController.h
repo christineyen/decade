@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FlickrFetcher.h"
 
 
 @interface PersonListViewController : UITableViewController<UITableViewDelegate, NSFetchedResultsControllerDelegate, UITableViewDataSource> {
@@ -15,8 +16,7 @@
     NSFetchedResultsController *_fetchedResultsController;
 }
 
+@property (nonatomic, assign) FlickrFetcher *fetcher;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
-
-- (IBAction)pushViewController:(id) sender;
 
 @end

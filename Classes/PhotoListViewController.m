@@ -8,10 +8,12 @@
 
 #import "PhotoListViewController.h"
 #import "PhotoDetailViewController.h"
+#import "Photo.h"
 
 
 @implementation PhotoListViewController
-@synthesize person=_person;
+@synthesize fetchedResultsController=_fetchedResultsController;
+@synthesize fetcher;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,7 +36,11 @@
 
 - (void)viewDidLoad
 {
-    self.title = [self.person objectForKey:@"Name"];
+    NSError *error = nil;
+    if (![self.fetchedResultsController performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        exit(-1);
+    }
 
     [super viewDidLoad];
 
@@ -83,7 +89,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[self.person objectForKey:@"Photos"] count];
+    id<NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -95,10 +102,10 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
 
-    NSString *photo = [[self.person objectForKey:@"Photos"] objectAtIndex:indexPath.row];
+    Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
-    cell.textLabel.text = photo;
-    cell.imageView.image = [UIImage imageNamed:photo];
+    cell.textLabel.text = photo.name;
+    cell.imageView.image = [UIImage imageNamed:photo.path];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
     return cell;
@@ -150,8 +157,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 
     PhotoDetailViewController *photoViewController = [[PhotoDetailViewController alloc] init];
-    photoViewController.photoName = [[self.person objectForKey:@"Photos"]
-                                     objectAtIndex:indexPath.row];
+
+    photoViewController.photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
     photoViewController.wantsFullScreenLayout = YES;
     [self.navigationController pushViewController:photoViewController animated:YES];
 

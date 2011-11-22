@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Photo.h"
 
 @interface PhotoDetailViewController : UIViewController {
-    NSString *_photoName;
+    Photo *_photo;
     IBOutlet UIImageView *imageView;
 }
 
-@property (assign) NSString *photoName;
+@property (nonatomic, retain) Photo *photo;
 @end
