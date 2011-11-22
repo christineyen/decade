@@ -10,7 +10,7 @@
         <relationship name="person" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="photos" inverseEntity="Person" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Photo" positionX="160" positionY="192" width="128" height="90"/>
         <element name="Person" positionX="405" positionY="234" width="128" height="75"/>
+        <element name="Photo" positionX="160" positionY="192" width="128" height="90"/>
     </elements>
 </model>

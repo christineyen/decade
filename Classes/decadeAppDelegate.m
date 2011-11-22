@@ -10,15 +10,8 @@
 #import "PersonListViewController.h"
 #import "PhotoListViewController.h"
 #import "FlickrFetcher.h"
-
-@interface NSManagedObject (PhotoAccessors)
-@property(nonatomic, retain) NSString *name, *path;
-@property(nonatomic, retain) NSManagedObject *person;
-@end
-
-@interface NSManagedObject (PersonAccessors)
-@property(nonatomic, retain) NSString *name;
-@end
+#import "Photo.h"
+#import "Person.h"
 
 @implementation decadeAppDelegate
 
@@ -42,25 +35,29 @@
 }
 
 - (int)loadDatabaseWithDefaults {
-    FlickrFetcher *fetcher = [FlickrFetcher sharedInstance];
+    fetcher = [FlickrFetcher sharedInstance];
     if (![fetcher databaseExists]) {
         NSString *thePath = [[NSBundle mainBundle] pathForResource:@"Photos" ofType:@"plist"];
         NSArray *db = [[NSArray alloc] initWithContentsOfFile:thePath];
 
         NSMutableDictionary *namePersonDict = [[NSMutableDictionary alloc] init];
-        NSManagedObject *person;
+        Person *person;
+        NSString *personName;
 
         NSManagedObjectContext *context = [fetcher managedObjectContext];
 
         for (NSDictionary *photo in db) {
-            NSManagedObject *photoObj = [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:context];
+            Photo *photoObj = [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:context];
             photoObj.name = [photo objectForKey:@"name"];
             photoObj.path = [photo objectForKey:@"path"];
+            personName = [photo objectForKey:@"user"];
 
-            person = [namePersonDict objectForKey:[photo objectForKey:@"user"]];
+            person = [namePersonDict objectForKey:personName];
             if (person == nil) {
                 person = [NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:context];
-                [namePersonDict setObject:person forKey:[photo objectForKey:@"user"]];
+                person.name = personName;
+
+                [namePersonDict setObject:person forKey:personName];
             }
             photoObj.person = person;
         }
@@ -75,40 +72,19 @@
     return 0;
 }
 
-- (int)fetchPhotoCount {
-    NSManagedObjectContext *context = [[FlickrFetcher sharedInstance] managedObjectContext];
-
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Photo" inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-
-    NSError *error = nil;
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    if (fetchedObjects == nil) {
-        NSLog(@"fetchedObjects is NIL?!?");
-    }
-
-    [fetchRequest release];
-    return [fetchedObjects count];
-}
-
 #pragma mark -
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
-    NSLog(@"Read and loaded %d rows from the .plist", [self loadDatabaseWithDefaults]);
-    NSLog(@"Loaded %d Photos", [self fetchPhotoCount]);
+    int loaded = [self loadDatabaseWithDefaults];
+    NSLog(@"Read and loaded %d rows from the .plist", loaded);
 
 	tabBarController = [[UITabBarController alloc] init];
 
     // Set up Contacts tab
 	PersonListViewController *personListController = [[PersonListViewController alloc] init];
-
-
-
-
-    personListController.photoDb = [[[NSArray alloc] init] autorelease];
+    personListController.fetchedResultsController = [fetcher fetchedResultsControllerForEntity:@"Person"
+                                                                                 withPredicate:nil];
 	personListController.title = @"People";
 
 	navController1 = [[UINavigationController alloc] initWithRootViewController:personListController];
@@ -161,7 +137,6 @@
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
      */
-    [self saveContext];
 }
 
 
@@ -183,109 +158,7 @@
  applicationWillTerminate: saves changes in the application's managed object context before the application terminates.
  */
 - (void)applicationWillTerminate:(UIApplication *)application {
-    [self saveContext];
-}
-
-
-- (void)saveContext {
-    
-    NSError *error = nil;
-	NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
-    if (managedObjectContext != nil) {
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            /*
-             Replace this implementation with code to handle the error appropriately.
-             
-             abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-             */
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        } 
-    }
 }    
-
-
-#pragma mark -
-#pragma mark Core Data stack
-
-/**
- Returns the managed object context for the application.
- If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
- */
-- (NSManagedObjectContext *)managedObjectContext {
-    
-    if (managedObjectContext_ != nil) {
-        return managedObjectContext_;
-    }
-    
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil) {
-        managedObjectContext_ = [[NSManagedObjectContext alloc] init];
-        [managedObjectContext_ setPersistentStoreCoordinator:coordinator];
-    }
-    return managedObjectContext_;
-}
-
-
-/**
- Returns the managed object model for the application.
- If the model doesn't already exist, it is created from the application's model.
- */
-- (NSManagedObjectModel *)managedObjectModel {
-    
-    if (managedObjectModel_ != nil) {
-        return managedObjectModel_;
-    }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"decade" withExtension:@"momd"];
-    managedObjectModel_ = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
-    return managedObjectModel_;
-}
-
-
-/**
- Returns the persistent store coordinator for the application.
- If the coordinator doesn't already exist, it is created and the application's store added to it.
- */
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
-    
-    if (persistentStoreCoordinator_ != nil) {
-        return persistentStoreCoordinator_;
-    }
-    
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"decade.sqlite"];
-    
-    NSError *error = nil;
-    persistentStoreCoordinator_ = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![persistentStoreCoordinator_ addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-         
-         Typical reasons for an error here include:
-         * The persistent store is not accessible;
-         * The schema for the persistent store is incompatible with current managed object model.
-         Check the error message to determine what the actual problem was.
-         
-         
-         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
-         
-         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-         * Simply deleting the existing store:
-         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
-         
-         * Performing automatic lightweight migration by passing the following dictionary as the options parameter: 
-         [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-         
-         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-         
-         */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }    
-    
-    return persistentStoreCoordinator_;
-}
 
 
 #pragma mark -
@@ -313,10 +186,6 @@
     [navController2 release];
     [navController1 release];
     [tabBarController release];
-	
-    [managedObjectContext_ release];
-    [managedObjectModel_ release];
-    [persistentStoreCoordinator_ release];
     
     [window release];
     [super dealloc];

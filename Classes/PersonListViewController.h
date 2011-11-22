@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 
 
-@interface PersonListViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource> {
+@interface PersonListViewController : UITableViewController<UITableViewDelegate, NSFetchedResultsControllerDelegate, UITableViewDataSource> {
     IBOutlet UITableView *tableView;
-    NSArray *_photoDb;
+
+    NSFetchedResultsController *_fetchedResultsController;
 }
-@property (retain) NSArray *photoDb;
+
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
 - (IBAction)pushViewController:(id) sender;
 
