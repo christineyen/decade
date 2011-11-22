@@ -18,6 +18,8 @@
 
 @interface Person (CoreDataGeneratedAccessors)
 
++ (Person *)fakeRecentsPerson;
+
 - (void)addPhotosObject:(Photo *)value;
 - (void)removePhotosObject:(Photo *)value;
 - (void)addPhotos:(NSSet *)values;

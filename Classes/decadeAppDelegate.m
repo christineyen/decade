@@ -17,20 +17,6 @@
 
 @synthesize window;
 
-- (Person *)fakeRecentsPerson {
-    NSManagedObjectContext *context = [fetcher managedObjectContext];
-    NSArray *photos = [fetcher fetchManagedObjectsForEntity:@"Photo" withPredicate:nil];
-
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Person"
-                                              inManagedObjectContext:context];
-
-    Person *person = [[Person alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
-    person.name = @"Recents";
-
-    [person addPhotos:[NSSet setWithArray:photos]];
-    return [person autorelease];
-}
-
 - (int)loadDatabaseWithDefaults {
     fetcher = [FlickrFetcher sharedInstance];
     if (![fetcher databaseExists]) {
@@ -92,7 +78,7 @@
     // Set up Recents tab
     PhotoListViewController *fakeRecentsController = [[PhotoListViewController alloc] init];
 
-    fakeRecentsController.person = [self fakeRecentsPerson];
+    fakeRecentsController.person = [Person fakeRecentsPerson];
     fakeRecentsController.title = @"Recents";
 
 	navController2 = [[UINavigationController alloc] initWithRootViewController:fakeRecentsController];
