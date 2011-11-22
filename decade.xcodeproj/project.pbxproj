@@ -34,8 +34,8 @@
 		97E361C1147730A3001FCE37 /* paper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 97E361C0147730A3001FCE37 /* paper.jpg */; };
 		97E361C8147739C9001FCE37 /* PhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E361C6147739C8001FCE37 /* PhotoDetailViewController.m */; };
 		97E361C9147739C9001FCE37 /* PhotoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97E361C7147739C8001FCE37 /* PhotoDetailViewController.xib */; };
-		97E361D8147B450D001FCE37 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E361D7147B450D001FCE37 /* Photo.m */; };
-		97E361DB147B4519001FCE37 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E361DA147B4519001FCE37 /* Person.m */; };
+		97E361DE147B4641001FCE37 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E361DD147B4640001FCE37 /* FlickrFetcher.m */; };
+		97E361E2147B5941001FCE37 /* People.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 97E361E0147B5941001FCE37 /* People.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,10 +73,9 @@
 		97E361C5147739C8001FCE37 /* PhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailViewController.h; sourceTree = "<group>"; };
 		97E361C6147739C8001FCE37 /* PhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDetailViewController.m; sourceTree = "<group>"; };
 		97E361C7147739C8001FCE37 /* PhotoDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoDetailViewController.xib; sourceTree = "<group>"; };
-		97E361D6147B450D001FCE37 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = Models/Photo.h; sourceTree = "<group>"; };
-		97E361D7147B450D001FCE37 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = Models/Photo.m; sourceTree = "<group>"; };
-		97E361D9147B4519001FCE37 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = Models/Person.h; sourceTree = "<group>"; };
-		97E361DA147B4519001FCE37 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = Models/Person.m; sourceTree = "<group>"; };
+		97E361DC147B4640001FCE37 /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
+		97E361DD147B4640001FCE37 /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
+		97E361E1147B5941001FCE37 /* People.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = People.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +96,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				97E361DF147B4644001FCE37 /* Flickr Helpers */,
 				97E361CD147B3844001FCE37 /* Models */,
 				1D3623240D0F684500981E51 /* decadeAppDelegate.h */,
 				1D3623250D0F684500981E51 /* decadeAppDelegate.m */,
@@ -187,12 +187,18 @@
 		97E361CD147B3844001FCE37 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				97E361D6147B450D001FCE37 /* Photo.h */,
-				97E361D7147B450D001FCE37 /* Photo.m */,
-				97E361D9147B4519001FCE37 /* Person.h */,
-				97E361DA147B4519001FCE37 /* Person.m */,
+				97E361E0147B5941001FCE37 /* People.xcdatamodeld */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		97E361DF147B4644001FCE37 /* Flickr Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				97E361DC147B4640001FCE37 /* FlickrFetcher.h */,
+				97E361DD147B4640001FCE37 /* FlickrFetcher.m */,
+			);
+			name = "Flickr Helpers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,8 +283,8 @@
 				97A3B6041474ACC100A08FA4 /* PersonListViewController.m in Sources */,
 				97E361BD14771F9D001FCE37 /* PhotoListViewController.m in Sources */,
 				97E361C8147739C9001FCE37 /* PhotoDetailViewController.m in Sources */,
-				97E361D8147B450D001FCE37 /* Photo.m in Sources */,
-				97E361DB147B4519001FCE37 /* Person.m in Sources */,
+				97E361DE147B4641001FCE37 /* FlickrFetcher.m in Sources */,
+				97E361E2147B5941001FCE37 /* People.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +380,16 @@
 			);
 			currentVersion = 28C3AD890F43EF2300507BA6 /* decade.xcdatamodel */;
 			path = decade.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		97E361E0147B5941001FCE37 /* People.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				97E361E1147B5941001FCE37 /* People.xcdatamodel */,
+			);
+			currentVersion = 97E361E1147B5941001FCE37 /* People.xcdatamodel */;
+			path = People.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

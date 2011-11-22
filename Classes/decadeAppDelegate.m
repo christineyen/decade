@@ -9,7 +9,16 @@
 #import "decadeAppDelegate.h"
 #import "PersonListViewController.h"
 #import "PhotoListViewController.h"
+#import "FlickrFetcher.h"
 
+@interface NSManagedObject (PhotoAccessors)
+@property(nonatomic, retain) NSString *name, *path;
+@property(nonatomic, retain) NSManagedObject *person;
+@end
+
+@interface NSManagedObject (PersonAccessors)
+@property(nonatomic, retain) NSString *name;
+@end
 
 @implementation decadeAppDelegate
 
@@ -32,19 +41,74 @@
     return allPhotosDb;
 }
 
+- (int)loadDatabaseWithDefaults {
+    FlickrFetcher *fetcher = [FlickrFetcher sharedInstance];
+    if (![fetcher databaseExists]) {
+        NSString *thePath = [[NSBundle mainBundle] pathForResource:@"Photos" ofType:@"plist"];
+        NSArray *db = [[NSArray alloc] initWithContentsOfFile:thePath];
+
+        NSMutableDictionary *namePersonDict = [[NSMutableDictionary alloc] init];
+        NSManagedObject *person;
+
+        NSManagedObjectContext *context = [fetcher managedObjectContext];
+
+        for (NSDictionary *photo in db) {
+            NSManagedObject *photoObj = [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:context];
+            photoObj.name = [photo objectForKey:@"name"];
+            photoObj.path = [photo objectForKey:@"path"];
+
+            person = [namePersonDict objectForKey:[photo objectForKey:@"user"]];
+            if (person == nil) {
+                person = [NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:context];
+                [namePersonDict setObject:person forKey:[photo objectForKey:@"user"]];
+            }
+            photoObj.person = person;
+        }
+
+        if (![context save:NULL]) {
+            NSLog(@"FAILED TO SAVE!!");
+        }
+
+        [namePersonDict release];
+        return [[db autorelease] count];
+    }
+    return 0;
+}
+
+- (int)fetchPhotoCount {
+    NSManagedObjectContext *context = [[FlickrFetcher sharedInstance] managedObjectContext];
+
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Photo" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+
+    NSError *error = nil;
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects == nil) {
+        NSLog(@"fetchedObjects is NIL?!?");
+    }
+
+    [fetchRequest release];
+    return [fetchedObjects count];
+}
+
 #pragma mark -
 #pragma mark Application lifecycle
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    NSLog(@"Read and loaded %d rows from the .plist", [self loadDatabaseWithDefaults]);
+    NSLog(@"Loaded %d Photos", [self fetchPhotoCount]);
+
 	tabBarController = [[UITabBarController alloc] init];
 
     // Set up Contacts tab
 	PersonListViewController *personListController = [[PersonListViewController alloc] init];
 
-    NSString *thePath = [[NSBundle mainBundle] pathForResource:@"Photos" ofType:@"plist"];
-    NSArray *db = [[NSArray alloc] initWithContentsOfFile:thePath];
 
-    personListController.photoDb = db;
+
+
+    personListController.photoDb = [[[NSArray alloc] init] autorelease];
 	personListController.title = @"People";
 
 	navController1 = [[UINavigationController alloc] initWithRootViewController:personListController];
@@ -53,7 +117,7 @@
 
     // Set up Recents tab
     PhotoListViewController *fakeRecentsController = [[PhotoListViewController alloc] init];
-    fakeRecentsController.person = [self fakeRecentsDb:db];
+    fakeRecentsController.person =  [[[NSDictionary alloc] init] autorelease];
     fakeRecentsController.title = @"Recents";
 
 	navController2 = [[UINavigationController alloc] initWithRootViewController:fakeRecentsController];
@@ -77,7 +141,6 @@
 	[self.window addSubview:tabBarController.view];
     [self.window makeKeyAndVisible];
 	
-    [db release];
     [fakeRecentsController release];
 	[personListController release];
     

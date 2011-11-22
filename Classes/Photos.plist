@@ -3,31 +3,108 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>Photos</key>
-		<array>
-			<string>enjoy.jpg</string>
-			<string>eyes.jpg</string>
-			<string>fall.jpg</string>
-			<string>forestdark.jpg</string>
-			<string>forestlight.jpg</string>
-			<string>going.jpg</string>
-			<string>paper.jpg</string>
-		</array>
-		<key>Name</key>
+		<key>path</key>
+		<string>enjoy.jpg</string>
+		<key>name</key>
+		<string>Enjoy Your Life</string>
+		<key>user</key>
 		<string>Goofy</string>
 	</dict>
 	<dict>
-		<key>Name</key>
+		<key>path</key>
+		<string>eyes.jpg</string>
+		<key>name</key>
+		<string>Eyes Open</string>
+		<key>user</key>
+		<string>Goofy</string>
+	</dict>
+	<dict>
+		<key>path</key>
+		<string>fall.jpg</string>
+		<key>name</key>
+		<string>Fallscape</string>
+		<key>user</key>
+		<string>Goofy</string>
+	</dict>
+	<dict>
+		<key>path</key>
+		<string>forestdark.jpg</string>
+		<key>name</key>
+		<string>Forest Through The Trees</string>
+		<key>user</key>
+		<string>Goofy</string>
+	</dict>
+	<dict>
+		<key>path</key>
+		<string>forestlight.jpg</string>
+		<key>name</key>
+		<string>Forest Light</string>
+		<key>user</key>
+		<string>Goofy</string>
+	</dict>
+	<dict>
+		<key>path</key>
+		<string>going.jpg</string>
+		<key>name</key>
+		<string>Going Home</string>
+		<key>user</key>
+		<string>Goofy</string>
+	</dict>
+	<dict>
+		<key>path</key>
+		<string>paper.jpg</string>
+		<key>name</key>
+		<string>Paper Swan</string>
+		<key>user</key>
+		<string>Goofy</string>
+	</dict>
+	<dict>
+		<key>path</key>
+		<string>apples.jpg</string>
+		<key>name</key>
+		<string>Apples to Apples</string>
+		<key>user</key>
 		<string>Mickey</string>
-		<key>Photos</key>
-		<array>
-			<string>apples.jpg</string>
-			<string>bananas.jpg</string>
-			<string>caged.jpg</string>
-			<string>caged3.jpg</string>
-			<string>drive.jpg</string>
-			<string>dust.jpg</string>
-		</array>
+	</dict>
+	<dict>
+		<key>path</key>
+		<string>bananas.jpg</string>
+		<key>name</key>
+		<string>Fresh Bananas</string>
+		<key>user</key>
+		<string>Mickey</string>
+	</dict>
+	<dict>
+		<key>path</key>
+		<string>caged.jpg</string>
+		<key>name</key>
+		<string>Caged</string>
+		<key>user</key>
+		<string>Mickey</string>
+	</dict>
+	<dict>
+		<key>path</key>
+		<string>caged3.jpg</string>
+		<key>name</key>
+		<string>Caged Closeup</string>
+		<key>user</key>
+		<string>Mickey</string>
+	</dict>
+	<dict>
+		<key>path</key>
+		<string>drive.jpg</string>
+		<key>name</key>
+		<string>Just Drive</string>
+		<key>user</key>
+		<string>Mickey</string>
+	</dict>
+	<dict>
+		<key>path</key>
+		<string>dust.jpg</string>
+		<key>name</key>
+		<string>Dust</string>
+		<key>user</key>
+		<string>Mickey</string>
 	</dict>
 </array>
 </plist>
