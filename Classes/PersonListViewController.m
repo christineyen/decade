@@ -10,6 +10,7 @@
 #import "PhotoListViewController.h"
 #import "FlickrFetcher.h"
 #import "Person.h"
+#import "Photo.h"
 
 
 @implementation PersonListViewController

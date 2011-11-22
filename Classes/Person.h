@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "Photo.h"
+
+@class Photo;
 
 @interface Person : NSManagedObject
 
