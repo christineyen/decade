@@ -101,6 +101,10 @@
     [photoViewController release];
 }
 
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView reloadData];
+}
+
 - (void)dealloc {
     [_fetchedResultsController release];
     [super dealloc];

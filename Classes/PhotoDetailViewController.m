@@ -45,6 +45,8 @@
     [super viewDidLoad];
 
     self.title = self.photo.name;
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
     self.nameLabel.text = self.photo.path;
     self.personLabel.text = [NSString stringWithFormat:@"photo by %@", self.photo.person.name];
 

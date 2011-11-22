@@ -21,4 +21,5 @@
 
 @property (nonatomic, retain) Photo *photo;
 @property (nonatomic, retain) UILabel *nameLabel, *personLabel;
+
 @end
