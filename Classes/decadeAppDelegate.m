@@ -17,21 +17,18 @@
 
 @synthesize window;
 
-- (NSDictionary *)fakeRecentsDb:(NSArray *)peopleDb {
+- (Person *)fakeRecentsPerson {
+    NSManagedObjectContext *context = [fetcher managedObjectContext];
+    NSArray *photos = [fetcher fetchManagedObjectsForEntity:@"Photo" withPredicate:nil];
 
-    NSMutableArray *allPhotos = [[NSMutableArray alloc] init];
-    for (NSDictionary *person in peopleDb) {
-        [allPhotos addObjectsFromArray:[person objectForKey:@"Photos"]];
-    }
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Person"
+                                              inManagedObjectContext:context];
 
-    NSDictionary *allPhotosDb = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 @"All Photos",
-                                 @"Name",
-                                 allPhotos,
-                                 @"Photos",
-                                 nil];
-    [allPhotos release];
-    return allPhotosDb;
+    Person *person = [[Person alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    person.name = @"Recents";
+
+    [person addPhotos:[NSSet setWithArray:photos]];
+    return [person autorelease];
 }
 
 - (int)loadDatabaseWithDefaults {
@@ -82,7 +79,7 @@
 	tabBarController = [[UITabBarController alloc] init];
 
     // Set up Contacts tab
-	PersonListViewController *personListController = [[PersonListViewController alloc] init];
+	PersonListViewController *personListController = [[PersonListViewController alloc] initWithStyle:UITableViewStylePlain];
     personListController.fetchedResultsController = [fetcher fetchedResultsControllerForEntity:@"Person"
                                                                                  withPredicate:nil];
     personListController.fetcher = fetcher;
@@ -95,9 +92,7 @@
     // Set up Recents tab
     PhotoListViewController *fakeRecentsController = [[PhotoListViewController alloc] init];
 
-    fakeRecentsController.fetchedResultsController = [fetcher fetchedResultsControllerForEntity:@"Photo"
-                                                                                  withPredicate:nil];
-    fakeRecentsController.fetcher = fetcher;
+    fakeRecentsController.person = [self fakeRecentsPerson];
     fakeRecentsController.title = @"Recents";
 
 	navController2 = [[UINavigationController alloc] initWithRootViewController:fakeRecentsController];
@@ -190,7 +185,7 @@
     [navController2 release];
     [navController1 release];
     [tabBarController release];
-    
+
     [window release];
     [super dealloc];
 }

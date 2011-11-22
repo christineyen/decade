@@ -15,4 +15,7 @@
 @dynamic name;
 @dynamic photos;
 
+- (NSArray *)photosAsArray {
+    return [self.photos allObjects];
+}
 @end

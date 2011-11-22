@@ -12,8 +12,7 @@
 
 
 @implementation PhotoListViewController
-@synthesize fetchedResultsController=_fetchedResultsController;
-@synthesize fetcher;
+@synthesize person=_person;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -36,12 +35,7 @@
 
 - (void)viewDidLoad
 {
-    NSError *error = nil;
-    if (![self.fetchedResultsController performFetch:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        exit(-1);
-    }
-
+    self.title = self.person.name;
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -89,8 +83,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    id<NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
+    return [self.person.photos count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -102,7 +95,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
 
-    Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Photo *photo = [self.person.photosAsArray objectAtIndex:indexPath.row];
 
     cell.textLabel.text = photo.name;
     cell.imageView.image = [UIImage imageNamed:photo.path];
@@ -158,11 +151,16 @@
 
     PhotoDetailViewController *photoViewController = [[PhotoDetailViewController alloc] init];
 
-    photoViewController.photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    photoViewController.photo = [self.person.photosAsArray objectAtIndex:indexPath.row];
     photoViewController.wantsFullScreenLayout = YES;
     [self.navigationController pushViewController:photoViewController animated:YES];
 
     [photoViewController release];
+}
+
+- (void)dealloc {
+    [_person release];
+    [super dealloc];
 }
 
 @end

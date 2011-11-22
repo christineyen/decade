@@ -25,6 +25,7 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         exit(-1);
     }
+    self.fetchedResultsController.delegate = self;
 
     [super viewDidLoad];
 
@@ -93,13 +94,7 @@
     [view deselectRowAtIndexPath:indexPath animated:NO];
 
     PhotoListViewController *photoViewController = [[PhotoListViewController alloc] init];
-    Person *person = [self.fetchedResultsController objectAtIndexPath:indexPath];
-
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"person.name like %@", person.name];
-
-    photoViewController.fetchedResultsController = [fetcher fetchedResultsControllerForEntity:@"Photo"
-                                                                                withPredicate:predicate];
-    photoViewController.fetcher = fetcher;
+    photoViewController.person = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
     [self.navigationController pushViewController:photoViewController animated:YES];
     [photoViewController release];

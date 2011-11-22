@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FlickrFetcher.h"
+#import "Person.h"
 
-@interface PhotoListViewController : UITableViewController<UITableViewDelegate, NSFetchedResultsControllerDelegate, UITableViewDataSource> {
-    NSFetchedResultsController *_fetchedResultsController;
+@interface PhotoListViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource> {
+    Person *_person;
 }
 
-@property (nonatomic, assign) FlickrFetcher *fetcher;
-@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, retain) Person *person;
 @end

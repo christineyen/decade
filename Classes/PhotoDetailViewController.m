@@ -55,4 +55,9 @@
     [self toggleNavigationBar:!self.navigationController.navigationBarHidden];
 }
 
+- (void)dealloc {
+    [_photo release];
+    [super dealloc];
+}
+
 @end
