@@ -7,6 +7,7 @@
 //
 
 #import "PhotoDetailViewController.h"
+#import "PhotoEditViewController.h"
 #import "Person.h"
 
 @implementation PhotoDetailViewController
@@ -44,7 +45,6 @@
 {
     [super viewDidLoad];
 
-    self.title = self.photo.name;
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
     self.nameLabel.text = self.photo.path;
@@ -63,11 +63,34 @@
     scrollView.delegate = self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    // Set in Appear rather than DidLoad bc it might have changed in the modal dialog
+    self.title = self.photo.name;
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    // Override behavior (the default toggling of Edit -> Done
+    // [super setEditing:editing animated:animated];
+
+    if (editing) {
+        PhotoEditViewController *editController = [[PhotoEditViewController alloc] init];
+        editController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+
+        editController.photo = self.photo;
+        [self presentModalViewController:editController animated:animated];
+
+        [editController release];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
