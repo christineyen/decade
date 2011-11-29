@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Photo.h"
+#import "PhotoEditViewController.h"
 
-@interface PhotoDetailViewController : UIViewController<UIScrollViewDelegate> {
+@interface PhotoDetailViewController : UIViewController<UIScrollViewDelegate,
+        PhotoEditViewControllerDelegate> {
     Photo *_photo;
     IBOutlet UIScrollView *scrollView;
     IBOutlet UIImageView *imageView;

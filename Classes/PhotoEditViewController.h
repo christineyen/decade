@@ -10,7 +10,10 @@
 #import "Photo.h"
 #import "Person.h"
 
+@protocol PhotoEditViewControllerDelegate;
+
 @interface PhotoEditViewController : UIViewController<UITextFieldDelegate> {
+    id <PhotoEditViewControllerDelegate> delegate;
     BOOL keyboardVisible;
     CGPoint offset;
 
@@ -24,7 +27,14 @@
     IBOutlet UILabel *personLabel;
 }
 @property (nonatomic, retain) Photo *photo;
+@property (nonatomic, assign) UITextField *nameTextField;
+@property (nonatomic, assign) id <PhotoEditViewControllerDelegate> delegate;
+@end
 
-- (IBAction)clickedSave:(id)sender;
-- (IBAction)clickedCancel:(id)sender;
+
+@protocol PhotoEditViewControllerDelegate
+
+- (void)photoEditViewDidSave:(PhotoEditViewController *)editController;
+- (void)photoEditViewDidCancel;
+
 @end

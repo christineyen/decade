@@ -84,13 +84,26 @@
 
     if (editing) {
         PhotoEditViewController *editController = [[PhotoEditViewController alloc] init];
+
         editController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 
         editController.photo = self.photo;
+        editController.delegate = self;
+
         [self presentModalViewController:editController animated:animated];
 
         [editController release];
     }
+}
+
+- (void)photoEditViewDidSave:(PhotoEditViewController *)editController {
+    self.photo.name = editController.nameTextField.text;
+    [[self.photo managedObjectContext] save:nil];
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)photoEditViewDidCancel {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

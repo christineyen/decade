@@ -12,6 +12,7 @@
 
 @implementation PhotoEditViewController
 @synthesize photo=_photo;
+@synthesize nameTextField, delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -75,13 +76,11 @@
 #pragma mark - Listeners / Handlers
 
 - (IBAction)clickedSave:(id)sender {
-    self.photo.name = nameTextField.text;
-    [[self.photo managedObjectContext] save:nil];
-    [self dismissModalViewControllerAnimated:YES];
+    [self.delegate photoEditViewDidSave:self];
 }
 
 - (IBAction)clickedCancel:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self.delegate photoEditViewDidCancel];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
