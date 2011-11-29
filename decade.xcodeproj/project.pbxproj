@@ -15,6 +15,22 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
+		9700A8A6147CC29A008A4843 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 9700A88E147CC29A008A4843 /* NSObject+SBJson.m */; };
+		9700A8A7147CC29A008A4843 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9700A891147CC29A008A4843 /* SBJsonParser.m */; };
+		9700A8A8147CC29A008A4843 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9700A893147CC29A008A4843 /* SBJsonStreamParser.m */; };
+		9700A8A9147CC29A008A4843 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9700A895147CC29A008A4843 /* SBJsonStreamParserAccumulator.m */; };
+		9700A8AA147CC29A008A4843 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9700A897147CC29A008A4843 /* SBJsonStreamParserAdapter.m */; };
+		9700A8AB147CC29A008A4843 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9700A899147CC29A008A4843 /* SBJsonStreamParserState.m */; };
+		9700A8AC147CC29A008A4843 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9700A89B147CC29A008A4843 /* SBJsonStreamWriter.m */; };
+		9700A8AD147CC29A008A4843 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9700A89D147CC29A008A4843 /* SBJsonStreamWriterAccumulator.m */; };
+		9700A8AE147CC29A008A4843 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9700A89F147CC29A008A4843 /* SBJsonStreamWriterState.m */; };
+		9700A8AF147CC29A008A4843 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9700A8A1147CC29A008A4843 /* SBJsonTokeniser.m */; };
+		9700A8B0147CC29A008A4843 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 9700A8A3147CC29A008A4843 /* SBJsonUTF8Stream.m */; };
+		9700A8B1147CC29A008A4843 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9700A8A5147CC29A008A4843 /* SBJsonWriter.m */; };
+		971DD234147B8C3600481C51 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 971DD233147B8C3600481C51 /* Photo.m */; };
+		971DD23A147B8CAB00481C51 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 971DD239147B8CAB00481C51 /* Person.m */; };
+		971DD24C147C65C400481C51 /* PhotoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 971DD24A147C65C400481C51 /* PhotoEditViewController.m */; };
+		971DD24D147C65C400481C51 /* PhotoEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 971DD24B147C65C400481C51 /* PhotoEditViewController.xib */; };
 		9736A9D71476232100BD1D92 /* apples.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9CB1476232100BD1D92 /* apples.jpg */; };
 		9736A9D81476232100BD1D92 /* bananas.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9CC1476232100BD1D92 /* bananas.jpg */; };
 		9736A9D91476232100BD1D92 /* caged.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9CD1476232100BD1D92 /* caged.jpg */; };
@@ -28,7 +44,6 @@
 		9736A9E11476232100BD1D92 /* forestlight.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9D51476232100BD1D92 /* forestlight.jpg */; };
 		9736A9E21476232100BD1D92 /* going.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9D61476232100BD1D92 /* going.jpg */; };
 		97A3B6041474ACC100A08FA4 /* PersonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A3B6021474ACC100A08FA4 /* PersonListViewController.m */; };
-		97A3B6051474ACC100A08FA4 /* PersonListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97A3B6031474ACC100A08FA4 /* PersonListViewController.xib */; };
 		97E361BD14771F9D001FCE37 /* PhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E361BC14771F9D001FCE37 /* PhotoListViewController.m */; };
 		97E361BF14772DE1001FCE37 /* Photos.plist in Resources */ = {isa = PBXBuildFile; fileRef = 97E361BE14772DE1001FCE37 /* Photos.plist */; };
 		97E361C1147730A3001FCE37 /* paper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 97E361C0147730A3001FCE37 /* paper.jpg */; };
@@ -51,6 +66,38 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* decade_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = decade_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* decade-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "decade-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		9700A88D147CC29A008A4843 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
+		9700A88E147CC29A008A4843 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
+		9700A88F147CC29A008A4843 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
+		9700A890147CC29A008A4843 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		9700A891147CC29A008A4843 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		9700A892147CC29A008A4843 /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
+		9700A893147CC29A008A4843 /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
+		9700A894147CC29A008A4843 /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
+		9700A895147CC29A008A4843 /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
+		9700A896147CC29A008A4843 /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
+		9700A897147CC29A008A4843 /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
+		9700A898147CC29A008A4843 /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
+		9700A899147CC29A008A4843 /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
+		9700A89A147CC29A008A4843 /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
+		9700A89B147CC29A008A4843 /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
+		9700A89C147CC29A008A4843 /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
+		9700A89D147CC29A008A4843 /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
+		9700A89E147CC29A008A4843 /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
+		9700A89F147CC29A008A4843 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
+		9700A8A0147CC29A008A4843 /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonTokeniser.h; sourceTree = "<group>"; };
+		9700A8A1147CC29A008A4843 /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
+		9700A8A2147CC29A008A4843 /* SBJsonUTF8Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonUTF8Stream.h; sourceTree = "<group>"; };
+		9700A8A3147CC29A008A4843 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
+		9700A8A4147CC29A008A4843 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		9700A8A5147CC29A008A4843 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		971DD232147B8C3600481C51 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		971DD233147B8C3600481C51 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		971DD238147B8CAB00481C51 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		971DD239147B8CAB00481C51 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		971DD249147C65C400481C51 /* PhotoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoEditViewController.h; sourceTree = "<group>"; };
+		971DD24A147C65C400481C51 /* PhotoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoEditViewController.m; sourceTree = "<group>"; };
+		971DD24B147C65C400481C51 /* PhotoEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoEditViewController.xib; sourceTree = "<group>"; };
 		9736A9CB1476232100BD1D92 /* apples.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = apples.jpg; path = Resources/apples.jpg; sourceTree = "<group>"; };
 		9736A9CC1476232100BD1D92 /* bananas.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = bananas.jpg; path = Resources/bananas.jpg; sourceTree = "<group>"; };
 		9736A9CD1476232100BD1D92 /* caged.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = caged.jpg; path = Resources/caged.jpg; sourceTree = "<group>"; };
@@ -65,7 +112,6 @@
 		9736A9D61476232100BD1D92 /* going.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = going.jpg; path = Resources/going.jpg; sourceTree = "<group>"; };
 		97A3B6011474ACC100A08FA4 /* PersonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonListViewController.h; sourceTree = "<group>"; };
 		97A3B6021474ACC100A08FA4 /* PersonListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonListViewController.m; sourceTree = "<group>"; };
-		97A3B6031474ACC100A08FA4 /* PersonListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonListViewController.xib; sourceTree = "<group>"; };
 		97E361BB14771F9D001FCE37 /* PhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoListViewController.h; sourceTree = "<group>"; };
 		97E361BC14771F9D001FCE37 /* PhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoListViewController.m; sourceTree = "<group>"; };
 		97E361BE14772DE1001FCE37 /* Photos.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Photos.plist; path = Classes/Photos.plist; sourceTree = "<group>"; };
@@ -96,18 +142,12 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9700A88C147CC28D008A4843 /* JSON */,
+				971DD231147B8C2600481C51 /* Model */,
+				97E361E0147B5941001FCE37 /* People.xcdatamodeld */,
 				97E361DF147B4644001FCE37 /* Flickr Helpers */,
-				97E361CD147B3844001FCE37 /* Models */,
 				1D3623240D0F684500981E51 /* decadeAppDelegate.h */,
 				1D3623250D0F684500981E51 /* decadeAppDelegate.m */,
-				97A3B6011474ACC100A08FA4 /* PersonListViewController.h */,
-				97A3B6021474ACC100A08FA4 /* PersonListViewController.m */,
-				97A3B6031474ACC100A08FA4 /* PersonListViewController.xib */,
-				97E361BB14771F9D001FCE37 /* PhotoListViewController.h */,
-				97E361BC14771F9D001FCE37 /* PhotoListViewController.m */,
-				97E361C5147739C8001FCE37 /* PhotoDetailViewController.h */,
-				97E361C6147739C8001FCE37 /* PhotoDetailViewController.m */,
-				97E361C7147739C8001FCE37 /* PhotoDetailViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -124,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				080E96DDFE201D6D7F000001 /* Classes */,
+				971DD248147C657300481C51 /* View Controllers */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -164,6 +205,67 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9700A88C147CC28D008A4843 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				9700A88D147CC29A008A4843 /* NSObject+SBJson.h */,
+				9700A88E147CC29A008A4843 /* NSObject+SBJson.m */,
+				9700A88F147CC29A008A4843 /* SBJson.h */,
+				9700A890147CC29A008A4843 /* SBJsonParser.h */,
+				9700A891147CC29A008A4843 /* SBJsonParser.m */,
+				9700A892147CC29A008A4843 /* SBJsonStreamParser.h */,
+				9700A893147CC29A008A4843 /* SBJsonStreamParser.m */,
+				9700A894147CC29A008A4843 /* SBJsonStreamParserAccumulator.h */,
+				9700A895147CC29A008A4843 /* SBJsonStreamParserAccumulator.m */,
+				9700A896147CC29A008A4843 /* SBJsonStreamParserAdapter.h */,
+				9700A897147CC29A008A4843 /* SBJsonStreamParserAdapter.m */,
+				9700A898147CC29A008A4843 /* SBJsonStreamParserState.h */,
+				9700A899147CC29A008A4843 /* SBJsonStreamParserState.m */,
+				9700A89A147CC29A008A4843 /* SBJsonStreamWriter.h */,
+				9700A89B147CC29A008A4843 /* SBJsonStreamWriter.m */,
+				9700A89C147CC29A008A4843 /* SBJsonStreamWriterAccumulator.h */,
+				9700A89D147CC29A008A4843 /* SBJsonStreamWriterAccumulator.m */,
+				9700A89E147CC29A008A4843 /* SBJsonStreamWriterState.h */,
+				9700A89F147CC29A008A4843 /* SBJsonStreamWriterState.m */,
+				9700A8A0147CC29A008A4843 /* SBJsonTokeniser.h */,
+				9700A8A1147CC29A008A4843 /* SBJsonTokeniser.m */,
+				9700A8A2147CC29A008A4843 /* SBJsonUTF8Stream.h */,
+				9700A8A3147CC29A008A4843 /* SBJsonUTF8Stream.m */,
+				9700A8A4147CC29A008A4843 /* SBJsonWriter.h */,
+				9700A8A5147CC29A008A4843 /* SBJsonWriter.m */,
+			);
+			name = JSON;
+			sourceTree = "<group>";
+		};
+		971DD231147B8C2600481C51 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				971DD238147B8CAB00481C51 /* Person.h */,
+				971DD239147B8CAB00481C51 /* Person.m */,
+				971DD232147B8C3600481C51 /* Photo.h */,
+				971DD233147B8C3600481C51 /* Photo.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		971DD248147C657300481C51 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				97A3B6011474ACC100A08FA4 /* PersonListViewController.h */,
+				97A3B6021474ACC100A08FA4 /* PersonListViewController.m */,
+				97E361BB14771F9D001FCE37 /* PhotoListViewController.h */,
+				97E361BC14771F9D001FCE37 /* PhotoListViewController.m */,
+				97E361C5147739C8001FCE37 /* PhotoDetailViewController.h */,
+				97E361C6147739C8001FCE37 /* PhotoDetailViewController.m */,
+				97E361C7147739C8001FCE37 /* PhotoDetailViewController.xib */,
+				971DD249147C65C400481C51 /* PhotoEditViewController.h */,
+				971DD24A147C65C400481C51 /* PhotoEditViewController.m */,
+				971DD24B147C65C400481C51 /* PhotoEditViewController.xib */,
+			);
+			name = "View Controllers";
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		9736A9E31476233000BD1D92 /* photos */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,14 +284,6 @@
 				9736A9D61476232100BD1D92 /* going.jpg */,
 			);
 			name = photos;
-			sourceTree = "<group>";
-		};
-		97E361CD147B3844001FCE37 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				97E361E0147B5941001FCE37 /* People.xcdatamodeld */,
-			);
-			name = Models;
 			sourceTree = "<group>";
 		};
 		97E361DF147B4644001FCE37 /* Flickr Helpers */ = {
@@ -251,7 +345,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				97A3B6051474ACC100A08FA4 /* PersonListViewController.xib in Resources */,
 				9736A9D71476232100BD1D92 /* apples.jpg in Resources */,
 				9736A9D81476232100BD1D92 /* bananas.jpg in Resources */,
 				9736A9D91476232100BD1D92 /* caged.jpg in Resources */,
@@ -267,6 +360,7 @@
 				97E361BF14772DE1001FCE37 /* Photos.plist in Resources */,
 				97E361C1147730A3001FCE37 /* paper.jpg in Resources */,
 				97E361C9147739C9001FCE37 /* PhotoDetailViewController.xib in Resources */,
+				971DD24D147C65C400481C51 /* PhotoEditViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +379,21 @@
 				97E361C8147739C9001FCE37 /* PhotoDetailViewController.m in Sources */,
 				97E361DE147B4641001FCE37 /* FlickrFetcher.m in Sources */,
 				97E361E2147B5941001FCE37 /* People.xcdatamodeld in Sources */,
+				971DD234147B8C3600481C51 /* Photo.m in Sources */,
+				971DD23A147B8CAB00481C51 /* Person.m in Sources */,
+				971DD24C147C65C400481C51 /* PhotoEditViewController.m in Sources */,
+				9700A8A6147CC29A008A4843 /* NSObject+SBJson.m in Sources */,
+				9700A8A7147CC29A008A4843 /* SBJsonParser.m in Sources */,
+				9700A8A8147CC29A008A4843 /* SBJsonStreamParser.m in Sources */,
+				9700A8A9147CC29A008A4843 /* SBJsonStreamParserAccumulator.m in Sources */,
+				9700A8AA147CC29A008A4843 /* SBJsonStreamParserAdapter.m in Sources */,
+				9700A8AB147CC29A008A4843 /* SBJsonStreamParserState.m in Sources */,
+				9700A8AC147CC29A008A4843 /* SBJsonStreamWriter.m in Sources */,
+				9700A8AD147CC29A008A4843 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				9700A8AE147CC29A008A4843 /* SBJsonStreamWriterState.m in Sources */,
+				9700A8AF147CC29A008A4843 /* SBJsonTokeniser.m in Sources */,
+				9700A8B0147CC29A008A4843 /* SBJsonUTF8Stream.m in Sources */,
+				9700A8B1147CC29A008A4843 /* SBJsonWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

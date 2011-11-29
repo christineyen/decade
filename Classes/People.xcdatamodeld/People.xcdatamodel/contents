@@ -8,12 +8,13 @@
         </fetchedProperty>
     </entity>
     <entity name="Photo" representedClassName="Photo" syncable="YES">
+        <attribute name="data" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="person" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="photos" inverseEntity="Person" syncable="YES"/>
     </entity>
     <elements>
         <element name="Person" positionX="405" positionY="234" width="128" height="104"/>
-        <element name="Photo" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="Photo" positionX="160" positionY="192" width="128" height="105"/>
     </elements>
 </model>

@@ -39,6 +39,11 @@
     [super viewDidLoad];
     self.title = self.person.name;
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    if (self.person == nil) {
+        NSLog(@"person was nil, loading fake person");
+        self.person = [Person flickrRecentsPerson];
+    }
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

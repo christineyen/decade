@@ -28,9 +28,10 @@
         NSString *personName;
 
         NSManagedObjectContext *context = [fetcher managedObjectContext];
+        Photo *photoObj;
 
         for (NSDictionary *photo in db) {
-            Photo *photoObj = [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:context];
+            photoObj = [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:context];
             photoObj.name = [photo objectForKey:@"name"];
             photoObj.path = [photo objectForKey:@"path"];
             personName = [photo objectForKey:@"user"];
@@ -77,8 +78,6 @@
 
     // Set up Recents tab
     PhotoListViewController *fakeRecentsController = [[PhotoListViewController alloc] init];
-
-    fakeRecentsController.person = [Person fakeRecentsPerson];
     fakeRecentsController.title = @"Recents";
 
 	navController2 = [[UINavigationController alloc] initWithRootViewController:fakeRecentsController];

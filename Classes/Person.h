@@ -19,7 +19,7 @@
 
 @interface Person (CoreDataGeneratedAccessors)
 
-+ (Person *)fakeRecentsPerson;
++ (Person *)flickrRecentsPerson;
 
 - (void)addPhotosObject:(Photo *)value;
 - (void)removePhotosObject:(Photo *)value;

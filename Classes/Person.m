@@ -9,6 +9,9 @@
 #import "Person.h"
 #import "Photo.h"
 #import "FlickrFetcher.h"
+#import "SBJson.h"
+
+#define kMaxInterestingPhotos 50
 
 
 @implementation Person
@@ -16,17 +19,57 @@
 @dynamic name;
 @dynamic photos;
 
-+ (Person *)fakeRecentsPerson {
++ (NSString *)flickrRecentsName {
+    return @"Flickr Users";
+}
+
++ (Person *)flickrRecentsPerson {
     FlickrFetcher *fetcher = [FlickrFetcher sharedInstance];
-    NSArray *photos = [fetcher fetchManagedObjectsForEntity:@"Photo" withPredicate:nil];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"name = %@", [self flickrRecentsName]];
+    NSArray *flickrResults = [fetcher fetchManagedObjectsForEntity:@"Person" withPredicate:pred];
+    
+    // Set up root Person
+    Person *person;
+    if ([flickrResults count] > 0) {
+        NSLog(@"found person O_o");
+        person = [[flickrResults objectAtIndex:0] retain];
+    } else {
+        NSLog(@"creating new fake person");
+        NSManagedObjectContext *context = [fetcher managedObjectContext];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Person"
+                                                  inManagedObjectContext:context];
+        person = [[Person alloc] initWithEntity:entity insertIntoManagedObjectContext:context];
+        person.name = [self flickrRecentsName];
+    }
+    
+    // Fetch items from Flickr, within reason
+    if ([person.photos count] < 50) {
+        SBJsonParser *parser = [[SBJsonParser alloc] init];
+        NSManagedObjectContext *context = [fetcher managedObjectContext];
+        NSString *flickrInterestingUrl = @"http://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1";
 
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Person"
-                                              inManagedObjectContext:[fetcher managedObjectContext]];
+        // TODO: actually handle errors more gracefully, somewhere
+        NSURL *url = [NSURL URLWithString:flickrInterestingUrl];
+        NSString *jsonString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+        NSArray *items = [[parser objectWithString:jsonString] objectForKey:@"items"];
+        Photo *photo;
+//        NSString *flickrUrl;
 
-    Person *person = [[Person alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
-    person.name = @"Recents";
+        for (NSDictionary *photoAttrs in items) {
+            photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo"
+                                                         inManagedObjectContext:context];
+            photo.name = [photoAttrs objectForKey:@"title"];
+            photo.person = person;
 
-    [person addPhotos:[NSSet setWithArray:photos]];
+//            flickrUrl = [[photoAttrs objectForKey:@"media"] objectForKey:@"m"];
+//            url = [NSURL URLWithString:[flickrUrl stringByReplacingOccurrencesOfString:@"_m.jpg" withString:@"_z.jpg"]];
+//
+//            photo.data = [NSData dataWithContentsOfURL:url];
+        }
+        [parser release];
+
+        [context save:nil];
+    }
     return [person autorelease];
 }
 

@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * path;
+@property (nonatomic, retain) NSData * data;
 @property (nonatomic, retain) Person *person;
 
 @end
