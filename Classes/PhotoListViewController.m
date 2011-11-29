@@ -129,8 +129,6 @@
 
         // Delete the row from the UI
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        NSLog(@"CREATE A NEW SOMETHING");
     }
 }
 

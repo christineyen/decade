@@ -17,7 +17,6 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    NSLog(@"initWithNibName called for edit controller");
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(keyboardWasShown:)

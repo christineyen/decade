@@ -31,10 +31,8 @@
     // Set up root Person
     Person *person;
     if ([flickrResults count] > 0) {
-        NSLog(@"found person O_o");
         person = [[flickrResults objectAtIndex:0] retain];
     } else {
-        NSLog(@"creating new fake person");
         NSManagedObjectContext *context = [fetcher managedObjectContext];
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"Person"
                                                   inManagedObjectContext:context];
