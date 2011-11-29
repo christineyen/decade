@@ -43,6 +43,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor colorWithRed:0.286 green:0.306 blue:0.294 alpha:1.0];
+
     scrollView.contentSize = CGSizeMake(320, 400);
     keyboardVisible = NO;
 

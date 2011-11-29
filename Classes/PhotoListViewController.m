@@ -37,6 +37,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor colorWithRed:0.835 green:0.839 blue:0.816 alpha:1.0];
+
     self.title = self.person.name;
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     

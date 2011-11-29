@@ -29,6 +29,7 @@
     self.fetchedResultsController.delegate = self;
 
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor colorWithRed:0.835 green:0.839 blue:0.816 alpha:1.0];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
