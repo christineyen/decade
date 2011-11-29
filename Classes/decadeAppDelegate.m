@@ -73,6 +73,7 @@
 	personListController.title = @"People";
 
 	navController1 = [[UINavigationController alloc] initWithRootViewController:personListController];
+    navController1.navigationBar.tintColor = [UIColor colorWithRed:0.58 green:0.729 blue:0.396 alpha:1.0];
     navController1.navigationBar.translucent = YES;
 
 
@@ -81,6 +82,7 @@
     fakeRecentsController.title = @"Recents";
 
 	navController2 = [[UINavigationController alloc] initWithRootViewController:fakeRecentsController];
+    navController2.navigationBar.tintColor = [UIColor colorWithRed:0.58 green:0.729 blue:0.396 alpha:1.0];
 
 
     // Override point for customization after application launch.

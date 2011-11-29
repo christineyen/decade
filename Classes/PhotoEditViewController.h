@@ -20,6 +20,7 @@
     UITextField *activeField;
 
     Photo *_photo;
+    IBOutlet UINavigationBar *navBar;
     IBOutlet UIScrollView *scrollView;
     IBOutlet UIImageView *imageView;
     IBOutlet UITextField *nameTextField;
