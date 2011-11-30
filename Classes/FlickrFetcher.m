@@ -118,7 +118,9 @@
     if (managedObjectModel != nil) {
         return managedObjectModel;
     }
-    managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];    
+    NSString *modelPath = [[NSBundle mainBundle] pathForResource:@"People" ofType:@"momd"];
+    NSURL *modelURL = [NSURL fileURLWithPath:modelPath];
+    managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return managedObjectModel;
 }
 

@@ -3,9 +3,6 @@
     <entity name="Person" representedClassName="Person" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="person" inverseEntity="Photo" syncable="YES"/>
-        <fetchedProperty name="alphaPhotos" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="Person"/>
-        </fetchedProperty>
     </entity>
     <entity name="Photo" representedClassName="Photo" syncable="YES">
         <attribute name="data" optional="YES" attributeType="Binary" syncable="YES"/>
@@ -14,7 +11,7 @@
         <relationship name="person" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="photos" inverseEntity="Person" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Person" positionX="405" positionY="234" width="128" height="104"/>
+        <element name="Person" positionX="405" positionY="234" width="128" height="75"/>
         <element name="Photo" positionX="160" positionY="192" width="128" height="105"/>
     </elements>
 </model>
