@@ -49,7 +49,7 @@
     scrollView.contentSize = CGSizeMake(320, 400);
     keyboardVisible = NO;
 
-    imageView.image = [UIImage imageNamed:self.photo.path];
+    imageView.image = [self.photo getUIImage];
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.clipsToBounds = YES;
     nameTextField.text = self.photo.name;

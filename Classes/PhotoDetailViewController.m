@@ -51,8 +51,9 @@
     self.personLabel.text = [NSString stringWithFormat:@"photo by %@", self.photo.person.name];
 
     // Fetch the image if necessary
-    if (self.photo.path != nil) {
-        imageView.image = [UIImage imageNamed:self.photo.path];
+    UIImage *uiImg = [self.photo getUIImage];
+    if (uiImg != nil) {
+        imageView.image = uiImg;
     } else if (self.photo.url != nil) {
         [spinner startAnimating];
         spinner.hidden = NO;
@@ -78,16 +79,16 @@
 - (void)imageFetchInBackground:(NSString *)url {
     // We have to handle autorelease on our own inside NSThreads!
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+    self.photo.data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
 
-    [self performSelectorOnMainThread:@selector(imageDoneFetching:)
-                           withObject:imageData
+    [self performSelectorOnMainThread:@selector(imageDoneFetching)
+                           withObject:nil
                         waitUntilDone:YES];
     [pool release];
 }
 
-- (void)imageDoneFetching:(NSData *)imageData {
-    imageView.image = [UIImage imageWithData:imageData];
+- (void)imageDoneFetching {
+    imageView.image = [UIImage imageWithData:self.photo.data];
     textView.hidden = NO;
     spinner.hidden = YES;
     [spinner stopAnimating];

@@ -18,4 +18,13 @@
 @dynamic data;
 @dynamic person;
 
+- (UIImage *)getUIImage {
+    if (self.path != nil) {
+        return [UIImage imageNamed:self.path];
+    } else if (self.data != nil) {
+        return [UIImage imageWithData:self.data];
+    }
+    return nil;
+}
+
 @end

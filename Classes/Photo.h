@@ -19,4 +19,5 @@
 @property (nonatomic, retain) NSData * data;
 @property (nonatomic, retain) Person *person;
 
+- (UIImage *)getUIImage;
 @end
