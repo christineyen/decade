@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Photo.h"
 #import "PhotoEditViewController.h"
 
 @interface PhotoDetailViewController : UIViewController<UIScrollViewDelegate,
@@ -15,6 +14,7 @@
     Photo *_photo;
     IBOutlet UIScrollView *scrollView;
     IBOutlet UIImageView *imageView;
+    IBOutlet UIActivityIndicatorView *spinner;
 
     IBOutlet UIView *textView;
     IBOutlet UILabel *nameLabel;

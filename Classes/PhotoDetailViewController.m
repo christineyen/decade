@@ -54,8 +54,13 @@
     if (self.photo.path != nil) {
         imageView.image = [UIImage imageNamed:self.photo.path];
     } else if (self.photo.url != nil) {
-        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.photo.url]];
-        imageView.image = [UIImage imageWithData:imageData];
+        [spinner startAnimating];
+        spinner.hidden = NO;
+        textView.hidden = YES;
+
+        [NSThread detachNewThreadSelector:@selector(imageFetchInBackground:)
+                                 toTarget:self
+                               withObject:self.photo.url];
     }
 
     // Handle gestures
@@ -68,6 +73,24 @@
     // Important settings - set userInteractionEnabled
     scrollView.maximumZoomScale = 10.0;
     scrollView.delegate = self;
+}
+
+- (void)imageFetchInBackground:(NSString *)url {
+    // We have to handle autorelease on our own inside NSThreads!
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+
+    [self performSelectorOnMainThread:@selector(imageDoneFetching:)
+                           withObject:imageData
+                        waitUntilDone:YES];
+    [pool release];
+}
+
+- (void)imageDoneFetching:(NSData *)imageData {
+    imageView.image = [UIImage imageWithData:imageData];
+    textView.hidden = NO;
+    spinner.hidden = YES;
+    [spinner stopAnimating];
 }
 
 - (void)viewWillAppear:(BOOL)animated
