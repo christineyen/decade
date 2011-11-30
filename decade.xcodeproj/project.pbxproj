@@ -43,6 +43,9 @@
 		9736A9E01476232100BD1D92 /* forestdark.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9D41476232100BD1D92 /* forestdark.jpg */; };
 		9736A9E11476232100BD1D92 /* forestlight.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9D51476232100BD1D92 /* forestlight.jpg */; };
 		9736A9E21476232100BD1D92 /* going.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9736A9D61476232100BD1D92 /* going.jpg */; };
+		97868AFA1485CDA100C73BBD /* soda.png in Resources */ = {isa = PBXBuildFile; fileRef = 97868AF91485CDA100C73BBD /* soda.png */; };
+		97868AFD1485CDF000C73BBD /* squaresoda_hires.png in Resources */ = {isa = PBXBuildFile; fileRef = 97868AFB1485CDF000C73BBD /* squaresoda_hires.png */; };
+		97868AFE1485CDF000C73BBD /* squaresoda.png in Resources */ = {isa = PBXBuildFile; fileRef = 97868AFC1485CDF000C73BBD /* squaresoda.png */; };
 		97A3B6041474ACC100A08FA4 /* PersonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A3B6021474ACC100A08FA4 /* PersonListViewController.m */; };
 		97E361BD14771F9D001FCE37 /* PhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E361BC14771F9D001FCE37 /* PhotoListViewController.m */; };
 		97E361BF14772DE1001FCE37 /* Photos.plist in Resources */ = {isa = PBXBuildFile; fileRef = 97E361BE14772DE1001FCE37 /* Photos.plist */; };
@@ -110,6 +113,9 @@
 		9736A9D41476232100BD1D92 /* forestdark.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = forestdark.jpg; path = Resources/forestdark.jpg; sourceTree = "<group>"; };
 		9736A9D51476232100BD1D92 /* forestlight.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = forestlight.jpg; path = Resources/forestlight.jpg; sourceTree = "<group>"; };
 		9736A9D61476232100BD1D92 /* going.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = going.jpg; path = Resources/going.jpg; sourceTree = "<group>"; };
+		97868AF91485CDA100C73BBD /* soda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soda.png; sourceTree = "<group>"; };
+		97868AFB1485CDF000C73BBD /* squaresoda_hires.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = squaresoda_hires.png; sourceTree = "<group>"; };
+		97868AFC1485CDF000C73BBD /* squaresoda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = squaresoda.png; sourceTree = "<group>"; };
 		97A3B6011474ACC100A08FA4 /* PersonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonListViewController.h; sourceTree = "<group>"; };
 		97A3B6021474ACC100A08FA4 /* PersonListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonListViewController.m; sourceTree = "<group>"; };
 		97E361BB14771F9D001FCE37 /* PhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoListViewController.h; sourceTree = "<group>"; };
@@ -185,6 +191,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				97868AF21485CC3600C73BBD /* iconsandsuch */,
 				97E361BE14772DE1001FCE37 /* Photos.plist */,
 				9736A9E31476233000BD1D92 /* photos */,
 				2819305F112F816700ECF9B4 /* decade.xcdatamodeld */,
@@ -286,6 +293,16 @@
 			name = photos;
 			sourceTree = "<group>";
 		};
+		97868AF21485CC3600C73BBD /* iconsandsuch */ = {
+			isa = PBXGroup;
+			children = (
+				97868AFB1485CDF000C73BBD /* squaresoda_hires.png */,
+				97868AFC1485CDF000C73BBD /* squaresoda.png */,
+				97868AF91485CDA100C73BBD /* soda.png */,
+			);
+			name = iconsandsuch;
+			sourceTree = "<group>";
+		};
 		97E361DF147B4644001FCE37 /* Flickr Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +381,9 @@
 				97E361C1147730A3001FCE37 /* paper.jpg in Resources */,
 				97E361C9147739C9001FCE37 /* PhotoDetailViewController.xib in Resources */,
 				971DD24D147C65C400481C51 /* PhotoEditViewController.xib in Resources */,
+				97868AFA1485CDA100C73BBD /* soda.png in Resources */,
+				97868AFD1485CDF000C73BBD /* squaresoda_hires.png in Resources */,
+				97868AFE1485CDF000C73BBD /* squaresoda.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
