@@ -14,6 +14,7 @@
 
 @dynamic name;
 @dynamic path;
+@dynamic url;
 @dynamic data;
 @dynamic person;
 

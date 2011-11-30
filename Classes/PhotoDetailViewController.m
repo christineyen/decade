@@ -50,6 +50,15 @@
     self.nameLabel.text = self.photo.path;
     self.personLabel.text = [NSString stringWithFormat:@"photo by %@", self.photo.person.name];
 
+    // Fetch the image if necessary
+    if (self.photo.path != nil) {
+        imageView.image = [UIImage imageNamed:self.photo.path];
+    } else if (self.photo.url != nil) {
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.photo.url]];
+        imageView.image = [UIImage imageWithData:imageData];
+    }
+
+    // Handle gestures
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc]
                                          initWithTarget:self
                                          action:@selector(handleSingleTap:)];
@@ -57,8 +66,6 @@
     [singleTap release];
 
     // Important settings - set userInteractionEnabled
-    imageView.image = [UIImage imageNamed:self.photo.path];
-
     scrollView.maximumZoomScale = 10.0;
     scrollView.delegate = self;
 }

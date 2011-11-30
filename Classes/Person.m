@@ -51,7 +51,7 @@
         NSString *jsonString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
         NSArray *items = [[parser objectWithString:jsonString] objectForKey:@"items"];
         Photo *photo;
-//        NSString *flickrUrl;
+        NSString *flickrUrl;
 
         for (NSDictionary *photoAttrs in items) {
             photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo"
@@ -59,10 +59,8 @@
             photo.name = [photoAttrs objectForKey:@"title"];
             photo.person = person;
 
-//            flickrUrl = [[photoAttrs objectForKey:@"media"] objectForKey:@"m"];
-//            url = [NSURL URLWithString:[flickrUrl stringByReplacingOccurrencesOfString:@"_m.jpg" withString:@"_z.jpg"]];
-//
-//            photo.data = [NSData dataWithContentsOfURL:url];
+            flickrUrl = [[photoAttrs objectForKey:@"media"] objectForKey:@"m"];
+            photo.url = [flickrUrl stringByReplacingOccurrencesOfString:@"_m.jpg" withString:@"_z.jpg"];
         }
         [parser release];
 
