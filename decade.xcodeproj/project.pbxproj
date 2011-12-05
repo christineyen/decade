@@ -54,6 +54,9 @@
 		97E361C9147739C9001FCE37 /* PhotoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97E361C7147739C8001FCE37 /* PhotoDetailViewController.xib */; };
 		97E361DE147B4641001FCE37 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E361DD147B4640001FCE37 /* FlickrFetcher.m */; };
 		97E361E2147B5941001FCE37 /* People.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 97E361E0147B5941001FCE37 /* People.xcdatamodeld */; };
+		97EDC80C1487798F00DB42D9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EDC80B1487798F00DB42D9 /* MapKit.framework */; };
+		97EDC8101487811800DB42D9 /* PhotoMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97EDC80E1487811800DB42D9 /* PhotoMapViewController.m */; };
+		97EDC8111487811800DB42D9 /* PhotoMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97EDC80F1487811800DB42D9 /* PhotoMapViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +131,10 @@
 		97E361DC147B4640001FCE37 /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
 		97E361DD147B4640001FCE37 /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
 		97E361E1147B5941001FCE37 /* People.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = People.xcdatamodel; sourceTree = "<group>"; };
+		97EDC80B1487798F00DB42D9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		97EDC80D1487811800DB42D9 /* PhotoMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoMapViewController.h; sourceTree = "<group>"; };
+		97EDC80E1487811800DB42D9 /* PhotoMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoMapViewController.m; sourceTree = "<group>"; };
+		97EDC80F1487811800DB42D9 /* PhotoMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoMapViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +146,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */,
+				97EDC80C1487798F00DB42D9 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +212,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				97EDC80B1487798F00DB42D9 /* MapKit.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
@@ -268,6 +277,9 @@
 				971DD249147C65C400481C51 /* PhotoEditViewController.h */,
 				971DD24A147C65C400481C51 /* PhotoEditViewController.m */,
 				971DD24B147C65C400481C51 /* PhotoEditViewController.xib */,
+				97EDC80D1487811800DB42D9 /* PhotoMapViewController.h */,
+				97EDC80E1487811800DB42D9 /* PhotoMapViewController.m */,
+				97EDC80F1487811800DB42D9 /* PhotoMapViewController.xib */,
 			);
 			name = "View Controllers";
 			path = Classes;
@@ -384,6 +396,7 @@
 				97868AFA1485CDA100C73BBD /* soda.png in Resources */,
 				97868AFD1485CDF000C73BBD /* squaresoda_hires.png in Resources */,
 				97868AFE1485CDF000C73BBD /* squaresoda.png in Resources */,
+				97EDC8111487811800DB42D9 /* PhotoMapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +430,7 @@
 				9700A8AF147CC29A008A4843 /* SBJsonTokeniser.m in Sources */,
 				9700A8B0147CC29A008A4843 /* SBJsonUTF8Stream.m in Sources */,
 				9700A8B1147CC29A008A4843 /* SBJsonWriter.m in Sources */,
+				97EDC8101487811800DB42D9 /* PhotoMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

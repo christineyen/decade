@@ -9,9 +9,9 @@
 #import "decadeAppDelegate.h"
 #import "PersonListViewController.h"
 #import "PhotoListViewController.h"
+#import "PhotoMapViewController.h"
 #import "FlickrFetcher.h"
 #import "Photo.h"
-#import "Person.h"
 
 @implementation decadeAppDelegate
 
@@ -85,8 +85,14 @@
     navController2.navigationBar.tintColor = [UIColor colorWithRed:0.58 green:0.729 blue:0.396 alpha:1.0];
 
 
+    // Set up Map tab
+    PhotoMapViewController *mapController = [[PhotoMapViewController alloc] init];
+    mapController.title = @"Map";
+
+
     // Override point for customization after application launch.
-	tabBarController.viewControllers = [NSArray arrayWithObjects:navController1, navController2, nil];
+	tabBarController.viewControllers = [NSArray arrayWithObjects:
+                                        navController1, navController2, mapController, nil];
 
 	UITabBarItem *item1 = [[UITabBarItem alloc]
 						  initWithTabBarSystemItem:UITabBarSystemItemContacts
@@ -99,6 +105,10 @@
 						   tag:0];
 	navController2.tabBarItem = item2;
 	[item2 release];
+    
+    UITabBarItem *item3 = [[UITabBarItem alloc]
+                           initWithTabBarSystemItem:UITabBarSystemItemSearch
+                           tag:0];
 	
 	[self.window addSubview:tabBarController.view];
     [self.window makeKeyAndVisible];
