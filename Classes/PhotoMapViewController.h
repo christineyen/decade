@@ -14,5 +14,4 @@
     NSString *foursquareOauthToken;
 }
 
-
 @end

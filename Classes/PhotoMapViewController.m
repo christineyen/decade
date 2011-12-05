@@ -35,17 +35,34 @@
     [super viewDidLoad];
     SBJsonParser *parser = [[SBJsonParser alloc] init];
 
-    NSString *foursquareURL = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=37.7732,-122.4321&oauth_token=%@", foursquareOauthToken];
+    NSString *foursquareURL = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=37.7732,-122.4321&oauth_token=%@",
+                               foursquareOauthToken];
     NSURL *url = [NSURL URLWithString:foursquareURL];
     NSString *jsonString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    NSArray *items = [[[parser objectWithString:jsonString] objectForKey:@"response"] objectForKey:@"venues"];
+    NSArray *items = [[[parser objectWithString:jsonString]
+                       objectForKey:@"response"] objectForKey:@"venues"];
+    CLLocationCoordinate2D venue;
 
     for (NSDictionary *venueAttrs in items) {
-        float lat = [[[venueAttrs objectForKey:@"location"] objectForKey:@"lat"] floatValue];
-        float lng = [[[venueAttrs objectForKey:@"location"] objectForKey:@"lng"] floatValue];
-        NSLog(@"lat: %f, lng: %f", lat, lng);
+        NSDictionary *loc = [venueAttrs objectForKey:@"location"];
+        venue.latitude = [[loc objectForKey:@"lat"] floatValue];
+        venue.longitude = [[loc objectForKey:@"lng"] floatValue];
+
+        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+        annotation.coordinate = venue;
+        annotation.title = [venueAttrs objectForKey:@"name"];
+        annotation.subtitle = [loc objectForKey:@"address"];
+
+        [mapView addAnnotation:annotation];
+        [annotation release];
     }
 
+    MKCoordinateRegion region = mapView.region;
+    region.span.latitudeDelta /= 10;
+    region.span.longitudeDelta /= 10;
+    region.center = venue;
+
+    [mapView setRegion:region animated:YES];
 
     [parser release];
 }
