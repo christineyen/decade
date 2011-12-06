@@ -107,6 +107,7 @@
 }
 
 - (void)dealloc {
+    [tableView release];
     [_fetchedResultsController release];
     [super dealloc];
 }

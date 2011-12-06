@@ -72,43 +72,45 @@
     personListController.fetcher = fetcher;
 	personListController.title = @"People";
 
-	navController1 = [[UINavigationController alloc] initWithRootViewController:personListController];
-    navController1.navigationBar.tintColor = [UIColor colorWithRed:0.58 green:0.729 blue:0.396 alpha:1.0];
-    navController1.navigationBar.translucent = YES;
+	peopleNavController = [[UINavigationController alloc] initWithRootViewController:personListController];
+    peopleNavController.navigationBar.tintColor = [UIColor colorWithRed:0.58 green:0.729 blue:0.396 alpha:1.0];
+    peopleNavController.navigationBar.translucent = YES;
 
 
     // Set up Recents tab
     PhotoListViewController *fakeRecentsController = [[PhotoListViewController alloc] init];
     fakeRecentsController.title = @"Recents";
 
-	navController2 = [[UINavigationController alloc] initWithRootViewController:fakeRecentsController];
-    navController2.navigationBar.tintColor = [UIColor colorWithRed:0.58 green:0.729 blue:0.396 alpha:1.0];
+	recentsNavController = [[UINavigationController alloc] initWithRootViewController:fakeRecentsController];
+    recentsNavController.navigationBar.tintColor = [UIColor colorWithRed:0.58 green:0.729 blue:0.396 alpha:1.0];
 
 
     // Set up Map tab
-    PhotoMapViewController *mapController = [[PhotoMapViewController alloc] init];
+    mapController = [[PhotoMapViewController alloc] init];
     mapController.title = @"Map";
 
 
     // Override point for customization after application launch.
 	tabBarController.viewControllers = [NSArray arrayWithObjects:
-                                        navController1, navController2, mapController, nil];
+                                        peopleNavController, recentsNavController, mapController, nil];
 
 	UITabBarItem *item1 = [[UITabBarItem alloc]
 						  initWithTabBarSystemItem:UITabBarSystemItemContacts
 						  tag:0];
-	navController1.tabBarItem = item1;
+	peopleNavController.tabBarItem = item1;
 	[item1 release];
 
 	UITabBarItem *item2 = [[UITabBarItem alloc]
 						   initWithTabBarSystemItem:UITabBarSystemItemRecents
 						   tag:0];
-	navController2.tabBarItem = item2;
+	recentsNavController.tabBarItem = item2;
 	[item2 release];
     
     UITabBarItem *item3 = [[UITabBarItem alloc]
                            initWithTabBarSystemItem:UITabBarSystemItemSearch
                            tag:0];
+    mapController.tabBarItem = item3;
+    [item3 release];
 	
 	[self.window addSubview:tabBarController.view];
     [self.window makeKeyAndVisible];
@@ -179,9 +181,12 @@
 
 
 - (void)dealloc {
-    [navController2 release];
-    [navController1 release];
+    [peopleNavController release];
+    [recentsNavController release];
+    [mapController release];
+    
     [tabBarController release];
+    [fetcher release];
 
     [window release];
     [super dealloc];

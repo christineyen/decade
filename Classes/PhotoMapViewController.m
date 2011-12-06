@@ -85,6 +85,15 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)dealloc {
+    [mapView release];
+    [spinner release];
+    foursquareOauthToken = nil;
+    [locationManager release];
+    
+    [super dealloc];
+}
+
 # pragma mark - Callbacks and helpers
 
 - (void)locationManager:(CLLocationManager *)manager

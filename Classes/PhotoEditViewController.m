@@ -75,6 +75,20 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)dealloc {
+    [activeField release];
+    [_photo release];
+    
+    [navBar release];
+    [scrollView release];
+    [imageView release];
+    [nameTextField release];
+    [pathLabel release];
+    [personLabel release];
+    
+    [super dealloc];
+}
+
 #pragma mark - Listeners / Handlers
 
 - (IBAction)clickedSave:(id)sender {

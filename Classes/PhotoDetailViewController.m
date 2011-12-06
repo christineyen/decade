@@ -149,6 +149,13 @@
 
 - (void)dealloc {
     [_photo release];
+    [scrollView release];
+    [imageView release];
+    [spinner release];
+    
+    [textView release];
+    [nameLabel release];
+    [personLabel release];
     [super dealloc];
 }
 

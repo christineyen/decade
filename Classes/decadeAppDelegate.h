@@ -13,9 +13,11 @@
 @interface decadeAppDelegate : NSObject <UIApplicationDelegate> {
     
     UIWindow *window;
+    UINavigationController *peopleNavController;
+    UINavigationController *recentsNavController;
+    UIViewController *mapController;
+    
 	UITabBarController *tabBarController;
-	UINavigationController *navController1;
-	UINavigationController *navController2;
     FlickrFetcher *fetcher;
 }
 
