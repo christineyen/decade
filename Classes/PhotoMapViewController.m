@@ -66,7 +66,7 @@
     
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-
+    
     [locationManager startMonitoringSignificantLocationChanges];
 }
 
@@ -102,19 +102,30 @@
     NSArray *annos = [self fetchAnnotationsForLat:newLocation.coordinate.latitude
                                      andLongitude:newLocation.coordinate.longitude];
     
-    // Hide Spinner
-    spinner.hidden = YES;
+    // Hide spinner & manipulate map
     [spinner stopAnimating];
-    
-    // Manipulate map
     [mapView addAnnotations:annos];
     
-    MKPointAnnotation *center = annos.lastObject;
+    float minLat = 150, minLng = 150, maxLat = -150, maxLng = -150;
     
+    for (MKPointAnnotation *anno in annos) {
+        if (anno.coordinate.latitude < minLat)
+            minLat = anno.coordinate.latitude;
+        if (anno.coordinate.latitude > maxLat)
+            maxLat = anno.coordinate.latitude;
+        if (anno.coordinate.longitude < minLng)
+            minLng = anno.coordinate.longitude;
+        if (anno.coordinate.longitude > maxLng)
+            maxLng = anno.coordinate.longitude;    
+    }
+        
     MKCoordinateRegion region = mapView.region;
-    region.span.latitudeDelta /= 10;
-    region.span.longitudeDelta /= 10;
-    region.center = center.coordinate;
+    region.span.latitudeDelta = maxLat - minLat;
+    region.span.longitudeDelta = maxLng - minLng;
+    CLLocationCoordinate2D center = {
+        ((minLat + maxLat) / 2), ((minLng + maxLng) / 2)
+    };
+    region.center = center;
     
     [mapView setRegion:region animated:YES];
 }
