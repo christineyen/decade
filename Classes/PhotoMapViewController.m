@@ -136,11 +136,11 @@
     NSMutableArray *annos = [[NSMutableArray alloc] init];
     
     // Populate map and zoom as necessary
-    CLLocationCoordinate2D venue;
     for (NSDictionary *venueAttrs in items) {
         NSDictionary *loc = [venueAttrs objectForKey:@"location"];
-        venue.latitude = [[loc objectForKey:@"lat"] floatValue];
-        venue.longitude = [[loc objectForKey:@"lng"] floatValue];
+        CLLocationCoordinate2D venue = {
+            [[loc objectForKey:@"lat"] floatValue], [[loc objectForKey:@"lng"] floatValue]
+        };
         
         MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
         annotation.coordinate = venue;
