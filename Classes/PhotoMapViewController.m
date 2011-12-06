@@ -9,6 +9,29 @@
 #import "PhotoMapViewController.h"
 #import "SBJson.h"
 
+// THIS IS A HACK to get around CoreLocation issues and iOS Simulator
+// http://stackoverflow.com/questions/802156/testing-corelocation-on-iphone-simulator/3304378
+#if TARGET_IPHONE_SIMULATOR
+@interface CLLocationManager (Simulator)
+@end
+
+@implementation CLLocationManager (Simulator)
+
+-(void)startMonitoringSignificantLocationChanges {
+    [self startUpdatingLocation];
+}
+-(void)startUpdatingLocation {
+    CLLocation *homeHome = [[[CLLocation alloc] initWithLatitude:37.256443
+                                                       longitude:-122.017323] autorelease];
+    [self.delegate locationManager:self
+               didUpdateToLocation:homeHome
+                      fromLocation:homeHome];
+}
+
+@end
+#endif // TARGET_IPHONE_SIMULATOR
+
+
 @implementation PhotoMapViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -33,38 +56,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    [spinner startAnimating];
+    spinner.hidden = NO;
+    
+    // Create the location manager if this object does not
+    // already have one.
+    if (nil == locationManager)
+        locationManager = [[CLLocationManager alloc] init];
+    
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
 
-    NSString *foursquareURL = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=37.7732,-122.4321&oauth_token=%@",
-                               foursquareOauthToken];
-    NSURL *url = [NSURL URLWithString:foursquareURL];
-    NSString *jsonString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    NSArray *items = [[[parser objectWithString:jsonString]
-                       objectForKey:@"response"] objectForKey:@"venues"];
-    CLLocationCoordinate2D venue;
-
-    for (NSDictionary *venueAttrs in items) {
-        NSDictionary *loc = [venueAttrs objectForKey:@"location"];
-        venue.latitude = [[loc objectForKey:@"lat"] floatValue];
-        venue.longitude = [[loc objectForKey:@"lng"] floatValue];
-
-        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-        annotation.coordinate = venue;
-        annotation.title = [venueAttrs objectForKey:@"name"];
-        annotation.subtitle = [loc objectForKey:@"address"];
-
-        [mapView addAnnotation:annotation];
-        [annotation release];
-    }
-
-    MKCoordinateRegion region = mapView.region;
-    region.span.latitudeDelta /= 10;
-    region.span.longitudeDelta /= 10;
-    region.center = venue;
-
-    [mapView setRegion:region animated:YES];
-
-    [parser release];
+    [locationManager startMonitoringSignificantLocationChanges];
 }
 
 - (void)viewDidUnload
@@ -72,12 +75,76 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    [locationManager release];
+    locationManager = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+# pragma mark - Callbacks and helpers
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation {
+    NSArray *annos = [self fetchAnnotationsForLat:newLocation.coordinate.latitude
+                                     andLongitude:newLocation.coordinate.longitude];
+    
+    // Hide Spinner
+    spinner.hidden = YES;
+    [spinner stopAnimating];
+    
+    // Manipulate map
+    [mapView addAnnotations:annos];
+    
+    MKPointAnnotation *center = annos.lastObject;
+    
+    MKCoordinateRegion region = mapView.region;
+    region.span.latitudeDelta /= 10;
+    region.span.longitudeDelta /= 10;
+    region.center = center.coordinate;
+    
+    [mapView setRegion:region animated:YES];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSLog(@"location manager errored out!");
+}
+
+- (NSArray *)fetchAnnotationsForLat:(double)lat andLongitude:(double)lng {
+    NSLog(@"fetching annotations for lat: %f, lng: %f", lat, lng);
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    
+    NSString *foursquareURL = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&oauth_token=%@",
+                               lat, lng, foursquareOauthToken];
+    NSURL *url = [NSURL URLWithString:foursquareURL];
+    NSString *jsonString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+    NSArray *items = [[[parser objectWithString:jsonString]
+                       objectForKey:@"response"] objectForKey:@"venues"];
+    NSMutableArray *annos = [[NSMutableArray alloc] init];
+    
+    // Populate map and zoom as necessary
+    CLLocationCoordinate2D venue;
+    for (NSDictionary *venueAttrs in items) {
+        NSDictionary *loc = [venueAttrs objectForKey:@"location"];
+        venue.latitude = [[loc objectForKey:@"lat"] floatValue];
+        venue.longitude = [[loc objectForKey:@"lng"] floatValue];
+        
+        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+        annotation.coordinate = venue;
+        annotation.title = [venueAttrs objectForKey:@"name"];
+        annotation.subtitle = [loc objectForKey:@"address"];
+        
+        [annos addObject:annotation];
+        
+        [annotation release];
+    }
+    
+    [parser release];
+    return [annos autorelease];
 }
 
 @end
