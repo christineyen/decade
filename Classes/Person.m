@@ -42,8 +42,11 @@
     return [person autorelease];
 }
 
+- (BOOL)isFlickrUser {
+    return [self.name isEqualToString:Person.flickrRecentsName];
+}
+
 - (BOOL)maybeFetchPhotos {
-    NSLog(@"maybe fetching photos from flickr");
     FlickrFetcher *fetcher = [FlickrFetcher sharedInstance];
     
     // Fetch items from Flickr, within reason
