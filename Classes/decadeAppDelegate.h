@@ -24,6 +24,7 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
 - (NSURL *)applicationDocumentsDirectory;
+- (void)setNetworkActivityIndicatorVisible:(BOOL)setVisible;
 
 @end
 
