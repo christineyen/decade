@@ -166,7 +166,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				97EDC843148F06E500DB42D9 /* Libraries */,
 				9700A88C147CC28D008A4843 /* JSON */,
 				971DD231147B8C2600481C51 /* Model */,
 				97E361E0147B5941001FCE37 /* People.xcdatamodeld */,
@@ -189,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				080E96DDFE201D6D7F000001 /* Classes */,
+				97EDC843148F06E500DB42D9 /* External Libraries */,
 				971DD248147C657300481C51 /* View Controllers */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -338,13 +338,14 @@
 			name = "Flickr Helpers";
 			sourceTree = "<group>";
 		};
-		97EDC843148F06E500DB42D9 /* Libraries */ = {
+		97EDC843148F06E500DB42D9 /* External Libraries */ = {
 			isa = PBXGroup;
 			children = (
 				97EDC840148F06E000DB42D9 /* DSActivityView.h */,
 				97EDC841148F06E000DB42D9 /* DSActivityView.m */,
 			);
-			name = Libraries;
+			name = "External Libraries";
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

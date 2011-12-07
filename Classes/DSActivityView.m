@@ -604,14 +604,9 @@ static DSActivityView *dsActivityView = nil;
 - (void)animateShow;
 {
     self.alpha = 0.0;
-    self.borderView.transform = CGAffineTransformMakeScale(3.0, 3.0);
     
 	[UIView beginAnimations:nil context:nil];
-//	[UIView setAnimationDuration:5.0];            // Uncomment to see the animation in slow motion
-	
-    self.borderView.transform = CGAffineTransformIdentity;
     self.alpha = 1.0;
-    
 	[UIView commitAnimations];
 }
 
