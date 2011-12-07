@@ -39,34 +39,41 @@
         person = [[Person alloc] initWithEntity:entity insertIntoManagedObjectContext:context];
         person.name = [self flickrRecentsName];
     }
+    return [person autorelease];
+}
+
+- (BOOL)maybeFetchPhotos {
+    NSLog(@"maybe fetching photos from flickr");
+    FlickrFetcher *fetcher = [FlickrFetcher sharedInstance];
     
     // Fetch items from Flickr, within reason
-    if ([person.photos count] < 50) {
+    if ([self.photos count] < 100) {
         SBJsonParser *parser = [[SBJsonParser alloc] init];
         NSManagedObjectContext *context = [fetcher managedObjectContext];
         NSString *flickrInterestingUrl = @"http://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1";
-
+        
         // TODO: actually handle errors more gracefully, somewhere
         NSURL *url = [NSURL URLWithString:flickrInterestingUrl];
         NSString *jsonString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
         NSArray *items = [[parser objectWithString:jsonString] objectForKey:@"items"];
         Photo *photo;
         NSString *flickrUrl;
-
+        
         for (NSDictionary *photoAttrs in items) {
             photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo"
-                                                         inManagedObjectContext:context];
+                                                  inManagedObjectContext:context];
             photo.name = [photoAttrs objectForKey:@"title"];
-            photo.person = person;
-
+            photo.person = self;
+            
             flickrUrl = [[photoAttrs objectForKey:@"media"] objectForKey:@"m"];
             photo.url = [flickrUrl stringByReplacingOccurrencesOfString:@"_m.jpg" withString:@"_z.jpg"];
         }
         [parser release];
-
+        
         [context save:nil];
+        return YES;
     }
-    return [person autorelease];
+    return NO;
 }
 
 - (NSArray *)photosAsArray {

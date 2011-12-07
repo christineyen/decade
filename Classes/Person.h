@@ -21,9 +21,6 @@
 
 + (Person *)flickrRecentsPerson;
 
-- (void)addPhotosObject:(Photo *)value;
-- (void)removePhotosObject:(Photo *)value;
-- (void)addPhotos:(NSSet *)values;
-- (void)removePhotos:(NSSet *)values;
+- (BOOL)maybeFetchPhotos;
 - (NSArray *)photosAsArray;
 @end
