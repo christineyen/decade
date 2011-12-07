@@ -8,6 +8,7 @@
 
 #import "PhotoDetailViewController.h"
 #import "PhotoEditViewController.h"
+#import "DSActivityView.h"
 
 @implementation PhotoDetailViewController
 @synthesize photo=_photo;
@@ -54,8 +55,7 @@
     if (uiImg != nil) {
         imageView.image = uiImg;
     } else if (self.photo.url != nil) {
-        [spinner startAnimating];
-        spinner.hidden = NO;
+        [DSBezelActivityView newActivityViewForView:self.view withLabel:@"Snatching..."];
         textView.hidden = YES;
 
         [NSThread detachNewThreadSelector:@selector(imageFetchInBackground:)
@@ -89,8 +89,7 @@
 - (void)imageDoneFetching {
     imageView.image = [UIImage imageWithData:self.photo.data];
     textView.hidden = NO;
-    spinner.hidden = YES;
-    [spinner stopAnimating];
+    [DSBezelActivityView removeViewAnimated:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -150,7 +149,6 @@
     [_photo release];
     [scrollView release];
     [imageView release];
-    [spinner release];
     
     [textView release];
     [nameLabel release];

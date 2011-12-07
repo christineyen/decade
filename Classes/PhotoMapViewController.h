@@ -12,7 +12,6 @@
 
 @interface PhotoMapViewController : UIViewController<CLLocationManagerDelegate> {
     IBOutlet MKMapView *mapView;
-    IBOutlet UIActivityIndicatorView *spinner;
     NSString *foursquareOauthToken;
     CLLocationManager *locationManager;
 }

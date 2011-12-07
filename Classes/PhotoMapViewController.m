@@ -8,6 +8,7 @@
 
 #import "decadeAppDelegate.h"
 #import "PhotoMapViewController.h"
+#import "DSActivityView.h"
 #import "SBJson.h"
 
 // THIS IS A HACK to get around CoreLocation issues and iOS Simulator
@@ -78,7 +79,6 @@
 
 - (void)dealloc {
     [mapView release];
-    [spinner release];
     foursquareOauthToken = nil;
     [locationManager release];
     
@@ -172,11 +172,10 @@
 - (void)setIsLoading:(BOOL)loading {
     decadeAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     if (loading) {
-        [spinner startAnimating];
-        spinner.hidden = NO;
+        [DSBezelActivityView newActivityViewForView:self.view withLabel:@"Loading..."];
         [delegate setNetworkActivityIndicatorVisible:YES];
     } else {
-        [spinner stopAnimating];
+        [DSBezelActivityView removeViewAnimated:YES];
         [delegate setNetworkActivityIndicatorVisible:NO];
     }
 }

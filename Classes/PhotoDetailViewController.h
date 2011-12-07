@@ -14,7 +14,6 @@
     Photo *_photo;
     IBOutlet UIScrollView *scrollView;
     IBOutlet UIImageView *imageView;
-    IBOutlet UIActivityIndicatorView *spinner;
 
     IBOutlet UIView *textView;
     IBOutlet UILabel *nameLabel;
