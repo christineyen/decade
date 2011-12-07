@@ -59,14 +59,11 @@
     [spinner startAnimating];
     spinner.hidden = NO;
     
-    // Create the location manager if this object does not
-    // already have one.
-    if (nil == locationManager)
+    if (nil == locationManager) {
         locationManager = [[CLLocationManager alloc] init];
-    
-    locationManager.delegate = self;
+        locationManager.delegate = self;
+    }
     locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-    
     [locationManager startMonitoringSignificantLocationChanges];
 }
 
@@ -75,7 +72,6 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-    [locationManager release];
     locationManager = nil;
 }
 
@@ -99,6 +95,9 @@
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation {
+    NSLog(@"fetching annotations for lat: %f, lng: %f",
+          newLocation.coordinate.latitude,
+          newLocation.coordinate.longitude);
     NSArray *annos = [self fetchAnnotationsForLat:newLocation.coordinate.latitude
                                      andLongitude:newLocation.coordinate.longitude];
     
@@ -135,7 +134,6 @@
 }
 
 - (NSArray *)fetchAnnotationsForLat:(double)lat andLongitude:(double)lng {
-    NSLog(@"fetching annotations for lat: %f, lng: %f", lat, lng);
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     
     NSString *foursquareURL = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&oauth_token=%@",
