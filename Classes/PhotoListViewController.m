@@ -42,7 +42,22 @@
     
     if (self.person == nil) {
         NSLog(@"person was nil, loading fake person");
-        self.person = [Person flickrRecentsPerson];
+        NSLog(@"loading from flickr...");
+        
+        // IT WOULD BE BETTER to return the person + data source first,
+        // THENNNN fetch from twitter as necessary. This causes a blank
+        // UITableView for a second, even if the FlickrUser's photos
+        // are going from 20 (nonzero!) -> 40
+        
+        dispatch_queue_t person_queue = dispatch_queue_create("Fetch Flickr Person", NULL);
+        dispatch_async(person_queue, ^{
+            self.person = [Person flickrRecentsPerson];
+            NSLog(@"DONE loading from flickr!");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+        });
+        dispatch_release(person_queue);
     } else {
         self.title = self.person.name;
     }
