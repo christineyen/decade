@@ -18,6 +18,7 @@
 }
 
 - (NSArray *)fetchAnnotationsForLat:(double)lat andLongitude:(double)lng;
+- (void)setIsLoading:(BOOL)loading;
 
 
 // load, immediately put up "loading" activity indicator

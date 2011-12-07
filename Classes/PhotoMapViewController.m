@@ -6,6 +6,7 @@
 //  Copyright (c) 2011 MIT. All rights reserved.
 //
 
+#import "decadeAppDelegate.h"
 #import "PhotoMapViewController.h"
 #import "SBJson.h"
 
@@ -56,15 +57,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [spinner startAnimating];
-    spinner.hidden = NO;
+    [self setIsLoading:YES];
     
-    if (nil == locationManager) {
-        locationManager = [[CLLocationManager alloc] init];
-        locationManager.delegate = self;
-    }
-    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-    [locationManager startMonitoringSignificantLocationChanges];
+    [self performSelector:@selector(initializeLocationManager) withObject:nil afterDelay:0.0];
 }
 
 - (void)viewDidUnload
@@ -92,6 +87,15 @@
 
 # pragma mark - Callbacks and helpers
 
+- (void)initializeLocationManager {
+    if (nil == locationManager) {
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+    }
+    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    [locationManager startMonitoringSignificantLocationChanges];
+}
+
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation {
@@ -102,7 +106,7 @@
                                      andLongitude:newLocation.coordinate.longitude];
     
     // Hide spinner & manipulate map
-    [spinner stopAnimating];
+    [self setIsLoading:NO];
     [mapView addAnnotations:annos];
     
     float minLat = 150, minLng = 150, maxLat = -150, maxLng = -150;
@@ -163,6 +167,18 @@
     
     [parser release];
     return [annos autorelease];
+}
+
+- (void)setIsLoading:(BOOL)loading {
+    decadeAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    if (loading) {
+        [spinner startAnimating];
+        spinner.hidden = NO;
+        [delegate setNetworkActivityIndicatorVisible:YES];
+    } else {
+        [spinner stopAnimating];
+        [delegate setNetworkActivityIndicatorVisible:NO];
+    }
 }
 
 @end
