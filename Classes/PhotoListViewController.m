@@ -39,13 +39,14 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithRed:0.835 green:0.839 blue:0.816 alpha:1.0];
 
-    self.title = self.person.name;
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     if (self.person == nil) {
         NSLog(@"person was nil, loading fake person");
         self.person = [Person flickrRecentsPerson];
     }
+    
+    self.title = self.person.name;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
