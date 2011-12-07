@@ -58,6 +58,8 @@
 		97EDC8101487811800DB42D9 /* PhotoMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97EDC80E1487811800DB42D9 /* PhotoMapViewController.m */; };
 		97EDC8111487811800DB42D9 /* PhotoMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97EDC80F1487811800DB42D9 /* PhotoMapViewController.xib */; };
 		97EDC816148D884E00DB42D9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EDC815148D884E00DB42D9 /* CoreLocation.framework */; };
+		97EDC81D148EEBCD00DB42D9 /* icon-map.png in Resources */ = {isa = PBXBuildFile; fileRef = 97EDC81C148EEBCD00DB42D9 /* icon-map.png */; };
+		97EDC81F148EEC6700DB42D9 /* icon-city.png in Resources */ = {isa = PBXBuildFile; fileRef = 97EDC81E148EEC6700DB42D9 /* icon-city.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +139,8 @@
 		97EDC80E1487811800DB42D9 /* PhotoMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoMapViewController.m; sourceTree = "<group>"; };
 		97EDC80F1487811800DB42D9 /* PhotoMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoMapViewController.xib; sourceTree = "<group>"; };
 		97EDC815148D884E00DB42D9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		97EDC81C148EEBCD00DB42D9 /* icon-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-map.png"; sourceTree = "<group>"; };
+		97EDC81E148EEC6700DB42D9 /* icon-city.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-city.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +316,8 @@
 		97868AF21485CC3600C73BBD /* iconsandsuch */ = {
 			isa = PBXGroup;
 			children = (
+				97EDC81E148EEC6700DB42D9 /* icon-city.png */,
+				97EDC81C148EEBCD00DB42D9 /* icon-map.png */,
 				97868AFB1485CDF000C73BBD /* squaresoda_hires.png */,
 				97868AFC1485CDF000C73BBD /* squaresoda.png */,
 				97868AF91485CDA100C73BBD /* soda.png */,
@@ -401,6 +407,8 @@
 				97868AFD1485CDF000C73BBD /* squaresoda_hires.png in Resources */,
 				97868AFE1485CDF000C73BBD /* squaresoda.png in Resources */,
 				97EDC8111487811800DB42D9 /* PhotoMapViewController.xib in Resources */,
+				97EDC81D148EEBCD00DB42D9 /* icon-map.png in Resources */,
+				97EDC81F148EEC6700DB42D9 /* icon-city.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -79,7 +79,7 @@
 
     // Set up Recents tab
     PhotoListViewController *fakeRecentsController = [[PhotoListViewController alloc] init];
-    fakeRecentsController.title = @"Recents";
+    fakeRecentsController.title = @"Flickr Users";
 
 	recentsNavController = [[UINavigationController alloc] initWithRootViewController:fakeRecentsController];
     recentsNavController.navigationBar.tintColor = [UIColor colorWithRed:0.58 green:0.729 blue:0.396 alpha:1.0];
@@ -101,13 +101,15 @@
 	[item1 release];
 
 	UITabBarItem *item2 = [[UITabBarItem alloc]
-						   initWithTabBarSystemItem:UITabBarSystemItemRecents
-						   tag:0];
+						   initWithTitle:fakeRecentsController.title
+                           image:[UIImage imageNamed:@"icon-city.png"]
+                           tag:0];
 	recentsNavController.tabBarItem = item2;
 	[item2 release];
     
     UITabBarItem *item3 = [[UITabBarItem alloc]
-                           initWithTabBarSystemItem:UITabBarSystemItemSearch
+                           initWithTitle:@"Mapify"
+                           image:[UIImage imageNamed:@"icon-map.png"]
                            tag:0];
     mapController.tabBarItem = item3;
     [item3 release];
