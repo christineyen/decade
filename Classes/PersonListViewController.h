@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FlickrFetcher.h"
+#import "Photo.h"
 
 
 @interface PersonListViewController : UITableViewController<UITableViewDelegate, NSFetchedResultsControllerDelegate, UITableViewDataSource> {

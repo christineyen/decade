@@ -8,7 +8,6 @@
 
 #import "PhotoDetailViewController.h"
 #import "PhotoEditViewController.h"
-#import "Person.h"
 
 @implementation PhotoDetailViewController
 @synthesize photo=_photo;

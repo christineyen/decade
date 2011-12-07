@@ -8,7 +8,6 @@
 
 #import "PhotoListViewController.h"
 #import "PhotoDetailViewController.h"
-#import "Photo.h"
 #import "FlickrFetcher.h"
 
 
