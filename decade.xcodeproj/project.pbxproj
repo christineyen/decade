@@ -60,6 +60,7 @@
 		97EDC816148D884E00DB42D9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EDC815148D884E00DB42D9 /* CoreLocation.framework */; };
 		97EDC81D148EEBCD00DB42D9 /* icon-map.png in Resources */ = {isa = PBXBuildFile; fileRef = 97EDC81C148EEBCD00DB42D9 /* icon-map.png */; };
 		97EDC81F148EEC6700DB42D9 /* icon-city.png in Resources */ = {isa = PBXBuildFile; fileRef = 97EDC81E148EEC6700DB42D9 /* icon-city.png */; };
+		97EDC842148F06E000DB42D9 /* DSActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97EDC841148F06E000DB42D9 /* DSActivityView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,6 +142,8 @@
 		97EDC815148D884E00DB42D9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		97EDC81C148EEBCD00DB42D9 /* icon-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-map.png"; sourceTree = "<group>"; };
 		97EDC81E148EEC6700DB42D9 /* icon-city.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-city.png"; sourceTree = "<group>"; };
+		97EDC840148F06E000DB42D9 /* DSActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSActivityView.h; sourceTree = "<group>"; };
+		97EDC841148F06E000DB42D9 /* DSActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSActivityView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +166,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				97EDC843148F06E500DB42D9 /* Libraries */,
 				9700A88C147CC28D008A4843 /* JSON */,
 				971DD231147B8C2600481C51 /* Model */,
 				97E361E0147B5941001FCE37 /* People.xcdatamodeld */,
@@ -334,6 +338,15 @@
 			name = "Flickr Helpers";
 			sourceTree = "<group>";
 		};
+		97EDC843148F06E500DB42D9 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				97EDC840148F06E000DB42D9 /* DSActivityView.h */,
+				97EDC841148F06E000DB42D9 /* DSActivityView.m */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -443,6 +456,7 @@
 				9700A8B0147CC29A008A4843 /* SBJsonUTF8Stream.m in Sources */,
 				9700A8B1147CC29A008A4843 /* SBJsonWriter.m in Sources */,
 				97EDC8101487811800DB42D9 /* PhotoMapViewController.m in Sources */,
+				97EDC842148F06E000DB42D9 /* DSActivityView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
