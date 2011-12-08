@@ -13,6 +13,7 @@
 
 @implementation PhotoListViewController
 @synthesize person=_person;
+@synthesize endCellLabel;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -98,18 +99,26 @@
 
 - (UITableViewCell *)getTableViewCountCell:(UITableView *)tableView {
     static NSString *EndCellIdentifier = @"EndCell";
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:EndCellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:EndCellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:EndCellIdentifier] autorelease];
+        
+        endCellLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, tableView.rowHeight)] autorelease];
+        endCellLabel.font = [UIFont systemFontOfSize:12.0f];
+        endCellLabel.textAlignment = UITextAlignmentRight;
+        endCellLabel.textColor = [UIColor colorWithRed:0.46 green:0.47 blue:0.435 alpha:1.0];
+        endCellLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
+        [cell.contentView addSubview:endCellLabel];
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%d Photos", [self.person.photos count]];
+    endCellLabel.text = [NSString stringWithFormat:@"%d Photos   ", [self.person.photos count]];
     return cell;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == [self.person.photos count]) { // the last item in the list
+    if ([self isLastCell:indexPath]) { // the last item in the list
         return [self getTableViewCountCell:tableView];
     }
     
@@ -127,6 +136,12 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self isLastCell:indexPath]) {
+        cell.backgroundColor = [UIColor colorWithRed:0.93 green:0.93 blue:0.92 alpha:1.0];
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -161,7 +176,11 @@
 
     [photoViewController release];
 }
-
+                          
+- (BOOL)isLastCell:(NSIndexPath *)indexPath {
+    return indexPath.row == [self.person.photos count];
+}
+    
 - (void)dealloc {
     [_person release];
     [super dealloc];

@@ -197,8 +197,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				97EDC84D149039F500DB42D9 /* QuartzCore.framework */,
 				080E96DDFE201D6D7F000001 /* Classes */,
+				97EDC86A14906D1600DB42D9 /* UI Elements */,
 				97EDC843148F06E500DB42D9 /* External Libraries */,
 				971DD248147C657300481C51 /* View Controllers */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -234,6 +234,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				97EDC84D149039F500DB42D9 /* QuartzCore.framework */,
 				97EDC815148D884E00DB42D9 /* CoreLocation.framework */,
 				97EDC80B1487798F00DB42D9 /* MapKit.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
@@ -363,6 +364,13 @@
 			);
 			name = "External Libraries";
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		97EDC86A14906D1600DB42D9 /* UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "UI Elements";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

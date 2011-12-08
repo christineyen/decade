@@ -12,7 +12,12 @@
 
 @interface PhotoListViewController : PullRefreshTableViewController<UITableViewDelegate, UITableViewDataSource> {
     Person *_person;
+    UITableViewCell *endCell;
+    UILabel *endCellLabel;
 }
 
 @property (nonatomic, retain) Person *person;
+@property (nonatomic, assign) UILabel *endCellLabel;
+
+- (BOOL)isLastCell:(NSIndexPath *)indexPath;
 @end
