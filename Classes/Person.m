@@ -46,7 +46,7 @@
     return [self.name isEqualToString:Person.flickrRecentsName];
 }
 
-- (void)fetchMorePhotos {
+- (int)fetchMorePhotos {
     FlickrFetcher *fetcher = [FlickrFetcher sharedInstance];
     
     NSUInteger oldCount = [self.photos count];
@@ -76,16 +76,17 @@
         photo.url = [flickrUrl stringByReplacingOccurrencesOfString:@"_m.jpg" withString:@"_z.jpg"];
     }
     
-    NSUInteger newCount = [self.photos count];
-    if (oldCount == newCount) {
-        NSLog(@"ERROR SUSPECTED: %@, %@", error, [error userInfo]);
-    } else {
-        NSLog(@"%d photos pulled from Flickr", newCount - oldCount);
-    }
-    
     [parser release];
-    
     [context save:nil];
+    
+    NSUInteger diff = [self.photos count] - oldCount;
+    if (diff == 0) {
+        NSLog(@"ERROR SUSPECTED: %@, %@", error, [error userInfo]);
+        return 0;
+    } 
+    
+    NSLog(@"%d photos pulled from Flickr", diff);
+    return diff;
 }
 
 - (NSArray *)photosAsArray {

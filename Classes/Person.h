@@ -23,6 +23,6 @@
 + (Person *)flickrRecentsPerson;
 
 - (BOOL)isFlickrUser;
-- (void)fetchMorePhotos;
+- (int)fetchMorePhotos;
 - (NSArray *)photosAsArray;
 @end

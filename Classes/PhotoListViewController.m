@@ -93,11 +93,26 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.person.photos count];
+    return [self.person.photos count] + 1;
+}
+
+- (UITableViewCell *)getTableViewCountCell:(UITableView *)tableView {
+    static NSString *EndCellIdentifier = @"EndCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:EndCellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:EndCellIdentifier] autorelease];
+    }
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%d Photos", [self.person.photos count]];
+    return cell;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == [self.person.photos count]) { // the last item in the list
+        return [self getTableViewCountCell:tableView];
+    }
+    
     static NSString *CellIdentifier = @"Cell";
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
