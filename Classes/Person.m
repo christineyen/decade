@@ -46,7 +46,11 @@
     return [self.name isEqualToString:Person.flickrRecentsName];
 }
 
-- (BOOL)maybeFetchPhotos {
+- (BOOL)shouldFetchPhotos {
+    return [self.photos count] < 100;
+}
+
+- (BOOL)fetchMorePhotos {
     FlickrFetcher *fetcher = [FlickrFetcher sharedInstance];
     
     // Fetch items from Flickr, within reason
