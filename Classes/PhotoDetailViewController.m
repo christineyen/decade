@@ -98,6 +98,13 @@
 
     // Set in Appear rather than DidLoad bc it might have changed in the modal dialog
     self.title = self.photo.name;
+    self.navigationController.navigationBar.translucent = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    self.navigationController.navigationBar.translucent = NO;
 }
 
 - (void)viewDidUnload

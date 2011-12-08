@@ -74,7 +74,6 @@
 
 	peopleNavController = [[UINavigationController alloc] initWithRootViewController:personListController];
     peopleNavController.navigationBar.tintColor = [UIColor colorWithRed:0.58 green:0.729 blue:0.396 alpha:1.0];
-    peopleNavController.navigationBar.translucent = YES;
 
 
     // Set up Recents tab
