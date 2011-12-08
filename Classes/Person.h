@@ -22,7 +22,6 @@
 + (Person *)flickrRecentsPerson;
 
 - (BOOL)isFlickrUser;
-- (BOOL)shouldFetchPhotos;
 - (void)fetchMorePhotos;
 - (NSArray *)photosAsArray;
 @end

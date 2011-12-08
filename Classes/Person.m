@@ -46,41 +46,33 @@
     return [self.name isEqualToString:Person.flickrRecentsName];
 }
 
-- (BOOL)shouldFetchPhotos {
-    return [self.photos count] < 100;
-}
-
-- (BOOL)fetchMorePhotos {
+- (void)fetchMorePhotos {
     FlickrFetcher *fetcher = [FlickrFetcher sharedInstance];
     
     // Fetch items from Flickr, within reason
-    if ([self.photos count] < 100) {
-        SBJsonParser *parser = [[SBJsonParser alloc] init];
-        NSManagedObjectContext *context = [fetcher managedObjectContext];
-        NSString *flickrInterestingUrl = @"http://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1";
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    NSManagedObjectContext *context = [fetcher managedObjectContext];
+    NSString *flickrInterestingUrl = @"http://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1";
+    
+    // TODO: actually handle errors more gracefully, somewhere
+    NSURL *url = [NSURL URLWithString:flickrInterestingUrl];
+    NSString *jsonString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+    NSArray *items = [[parser objectWithString:jsonString] objectForKey:@"items"];
+    Photo *photo;
+    NSString *flickrUrl;
+    
+    for (NSDictionary *photoAttrs in items) {
+        photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo"
+                                              inManagedObjectContext:context];
+        photo.name = [photoAttrs objectForKey:@"title"];
+        photo.person = self;
         
-        // TODO: actually handle errors more gracefully, somewhere
-        NSURL *url = [NSURL URLWithString:flickrInterestingUrl];
-        NSString *jsonString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-        NSArray *items = [[parser objectWithString:jsonString] objectForKey:@"items"];
-        Photo *photo;
-        NSString *flickrUrl;
-        
-        for (NSDictionary *photoAttrs in items) {
-            photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo"
-                                                  inManagedObjectContext:context];
-            photo.name = [photoAttrs objectForKey:@"title"];
-            photo.person = self;
-            
-            flickrUrl = [[photoAttrs objectForKey:@"media"] objectForKey:@"m"];
-            photo.url = [flickrUrl stringByReplacingOccurrencesOfString:@"_m.jpg" withString:@"_z.jpg"];
-        }
-        [parser release];
-        
-        [context save:nil];
-        return YES;
+        flickrUrl = [[photoAttrs objectForKey:@"media"] objectForKey:@"m"];
+        photo.url = [flickrUrl stringByReplacingOccurrencesOfString:@"_m.jpg" withString:@"_z.jpg"];
     }
-    return NO;
+    [parser release];
+    
+    [context save:nil];
 }
 
 - (NSArray *)photosAsArray {

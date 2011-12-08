@@ -61,6 +61,9 @@
 		97EDC81D148EEBCD00DB42D9 /* icon-map.png in Resources */ = {isa = PBXBuildFile; fileRef = 97EDC81C148EEBCD00DB42D9 /* icon-map.png */; };
 		97EDC81F148EEC6700DB42D9 /* icon-city.png in Resources */ = {isa = PBXBuildFile; fileRef = 97EDC81E148EEC6700DB42D9 /* icon-city.png */; };
 		97EDC842148F06E000DB42D9 /* DSActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97EDC841148F06E000DB42D9 /* DSActivityView.m */; };
+		97EDC849149039A800DB42D9 /* icon-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 97EDC848149039A800DB42D9 /* icon-arrow.png */; };
+		97EDC84C149039C800DB42D9 /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97EDC84B149039C800DB42D9 /* PullRefreshTableViewController.m */; };
+		97EDC84E149039F500DB42D9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EDC84D149039F500DB42D9 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,6 +147,10 @@
 		97EDC81E148EEC6700DB42D9 /* icon-city.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-city.png"; sourceTree = "<group>"; };
 		97EDC840148F06E000DB42D9 /* DSActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSActivityView.h; sourceTree = "<group>"; };
 		97EDC841148F06E000DB42D9 /* DSActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSActivityView.m; sourceTree = "<group>"; };
+		97EDC848149039A800DB42D9 /* icon-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-arrow.png"; sourceTree = "<group>"; };
+		97EDC84A149039C800DB42D9 /* PullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRefreshTableViewController.h; sourceTree = "<group>"; };
+		97EDC84B149039C800DB42D9 /* PullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshTableViewController.m; sourceTree = "<group>"; };
+		97EDC84D149039F500DB42D9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97EDC84E149039F500DB42D9 /* QuartzCore.framework in Frameworks */,
 				97EDC816148D884E00DB42D9 /* CoreLocation.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
@@ -187,6 +195,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				97EDC84D149039F500DB42D9 /* QuartzCore.framework */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				97EDC843148F06E500DB42D9 /* External Libraries */,
 				971DD248147C657300481C51 /* View Controllers */,
@@ -320,6 +329,7 @@
 		97868AF21485CC3600C73BBD /* iconsandsuch */ = {
 			isa = PBXGroup;
 			children = (
+				97EDC848149039A800DB42D9 /* icon-arrow.png */,
 				97EDC81E148EEC6700DB42D9 /* icon-city.png */,
 				97EDC81C148EEBCD00DB42D9 /* icon-map.png */,
 				97868AFB1485CDF000C73BBD /* squaresoda_hires.png */,
@@ -341,6 +351,8 @@
 		97EDC843148F06E500DB42D9 /* External Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				97EDC84A149039C800DB42D9 /* PullRefreshTableViewController.h */,
+				97EDC84B149039C800DB42D9 /* PullRefreshTableViewController.m */,
 				97EDC840148F06E000DB42D9 /* DSActivityView.h */,
 				97EDC841148F06E000DB42D9 /* DSActivityView.m */,
 			);
@@ -423,6 +435,7 @@
 				97EDC8111487811800DB42D9 /* PhotoMapViewController.xib in Resources */,
 				97EDC81D148EEBCD00DB42D9 /* icon-map.png in Resources */,
 				97EDC81F148EEC6700DB42D9 /* icon-city.png in Resources */,
+				97EDC849149039A800DB42D9 /* icon-arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +471,7 @@
 				9700A8B1147CC29A008A4843 /* SBJsonWriter.m in Sources */,
 				97EDC8101487811800DB42D9 /* PhotoMapViewController.m in Sources */,
 				97EDC842148F06E000DB42D9 /* DSActivityView.m in Sources */,
+				97EDC84C149039C800DB42D9 /* PullRefreshTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

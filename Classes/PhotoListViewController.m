@@ -9,7 +9,6 @@
 #import "PhotoListViewController.h"
 #import "PhotoDetailViewController.h"
 #import "FlickrFetcher.h"
-#import "DSActivityView.h"
 
 
 @implementation PhotoListViewController
@@ -62,23 +61,29 @@
     [self.tableView reloadData];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    if ([self.person isFlickrUser] && [self.person shouldFetchPhotos]) {
-        [DSBezelActivityView newActivityViewForView:self.view withLabel:@"Loading..."];
-
+- (void)setupStrings {
+    textPull = [[NSString alloc] initWithString:@"Pull down to PULL FROM FLICKR..."];
+    textRelease = [[NSString alloc] initWithString:@"Release to GET FROM FLICKR..."];
+    textLoading = [[NSString alloc] initWithString:@"Loading FROM FLICKR..."];
+}
+- (void)refresh {
+    if ([self.person isFlickrUser]) {
         dispatch_queue_t person_queue = dispatch_queue_create("Fetch Flickr Person", NULL);
         dispatch_async(person_queue, ^{
             [self.person fetchMorePhotos];
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSLog(@"reloading tableview!");
                 [self.tableView reloadData];
-                [DSBezelActivityView removeViewAnimated:YES];
             });
         });
         dispatch_release(person_queue);
     }
+    [self stopLoading];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

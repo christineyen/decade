@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PullRefreshTableViewController.h"
 #import "Person.h"
 
-@interface PhotoListViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource> {
+@interface PhotoListViewController : PullRefreshTableViewController<UITableViewDelegate, UITableViewDataSource> {
     Person *_person;
 }
 
