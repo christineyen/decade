@@ -44,6 +44,9 @@
         NSLog(@"person was nil, loading fake person");
         self.person = [Person flickrRecentsPerson];
     }
+    if ([self.person.photos count] == 0) {
+        [self refresh];
+    }
 }
 
 - (void)viewDidUnload
@@ -68,17 +71,15 @@
 }
 
 - (void)refresh {
-    if ([self.person isFlickrUser]) {
-        dispatch_queue_t person_queue = dispatch_queue_create("Fetch Flickr Person", NULL);
-        dispatch_async(person_queue, ^{
-            [self.person fetchMorePhotos];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                NSLog(@"reloading tableview!");
-                [self.tableView reloadData];
-            });
+    dispatch_queue_t person_queue = dispatch_queue_create("Fetch Flickr Person", NULL);
+    dispatch_async(person_queue, ^{
+        [self.person fetchMorePhotos];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"reloading tableview!");
+            [self.tableView reloadData];
         });
-        dispatch_release(person_queue);
-    }
+    });
+    dispatch_release(person_queue);
     [self stopLoading];
 }
 
