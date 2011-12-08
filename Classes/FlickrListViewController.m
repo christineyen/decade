@@ -73,11 +73,12 @@
 - (void)refresh {
     dispatch_queue_t person_queue = dispatch_queue_create("Fetch Flickr Person", NULL);
     dispatch_async(person_queue, ^{
-        [self.person fetchMorePhotos];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"reloading tableview!");
-            [self.tableView reloadData];
-        });
+        if ([self.person fetchMorePhotos] > 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSLog(@"reloading tableview!");
+                [self.tableView reloadData];
+            });
+        } // else, no need to refresh
     });
     dispatch_release(person_queue);
     [self stopLoading];
