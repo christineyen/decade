@@ -13,7 +13,7 @@
 
 @implementation PhotoListViewController
 @synthesize person=_person;
-@synthesize endCellLabel;
+@synthesize endCell=_endCell;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -98,21 +98,18 @@
 }
 
 - (UITableViewCell *)getTableViewCountCell:(UITableView *)tableView {
-    static NSString *EndCellIdentifier = @"EndCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:EndCellIdentifier];
+    static NSString *EndIdentifier = @"EndTableViewCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:EndIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:EndCellIdentifier] autorelease];
-        
-        endCellLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, tableView.rowHeight)] autorelease];
-        endCellLabel.font = [UIFont systemFontOfSize:12.0f];
-        endCellLabel.textAlignment = UITextAlignmentRight;
-        endCellLabel.textColor = [UIColor colorWithRed:0.46 green:0.47 blue:0.435 alpha:1.0];
-        endCellLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
-        [cell.contentView addSubview:endCellLabel];
+        [[NSBundle mainBundle] loadNibNamed:@"EndUITableViewCell" owner:self options:nil];
+        cell = self.endCell;
+        self.endCell = nil;
     }
     
-    endCellLabel.text = [NSString stringWithFormat:@"%d Photos   ", [self.person.photos count]];
+    cell.contentView.backgroundColor = [UIColor colorWithRed:0.855 green:0.858 blue:0.832 alpha:1.0];
+    UILabel *countLabel = (UILabel *)[cell viewWithTag:1];
+    countLabel.text = [NSString stringWithFormat:@"%d Photos   ", [self.person.photos count]];
+    
     return cell;
 }
 
@@ -136,12 +133,6 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self isLastCell:indexPath]) {
-        cell.backgroundColor = [UIColor colorWithRed:0.93 green:0.93 blue:0.92 alpha:1.0];
-    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
