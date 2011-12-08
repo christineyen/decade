@@ -14,6 +14,7 @@
 @implementation PhotoListViewController
 @synthesize person=_person;
 @synthesize endCell=_endCell;
+@synthesize endCellCount=_endCellCount;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -107,8 +108,7 @@
     }
     
     cell.contentView.backgroundColor = [UIColor colorWithRed:0.855 green:0.858 blue:0.832 alpha:1.0];
-    UILabel *countLabel = (UILabel *)[cell viewWithTag:1];
-    countLabel.text = [NSString stringWithFormat:@"%d Photos   ", [self.person.photos count]];
+    self.endCellCount.text = [NSString stringWithFormat:@"%d", [self.person.photos count]];
     
     return cell;
 }
@@ -148,8 +148,9 @@
         [context deleteObject:photo];
         [context save:nil];
 
-        // Delete the row from the UI
+        // Update UI
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+        self.endCellCount.text = [NSString stringWithFormat:@"%d", [self.person.photos count]];
     }
 }
 
