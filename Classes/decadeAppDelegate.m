@@ -9,6 +9,7 @@
 #import "decadeAppDelegate.h"
 #import "PersonListViewController.h"
 #import "PhotoListViewController.h"
+#import "FlickrListViewController.h"
 #import "PhotoMapViewController.h"
 #import "FlickrFetcher.h"
 #import "Photo.h"
@@ -66,9 +67,10 @@
 	tabBarController = [[UITabBarController alloc] init];
 
     // Set up Contacts tab
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"name != %@", [Person flickrRecentsName]];
 	PersonListViewController *personListController = [[PersonListViewController alloc] initWithStyle:UITableViewStylePlain];
     personListController.fetchedResultsController = [fetcher fetchedResultsControllerForEntity:@"Person"
-                                                                                 withPredicate:nil];
+                                                                                 withPredicate:pred];
     personListController.fetcher = fetcher;
 	personListController.title = @"People";
 
@@ -77,7 +79,7 @@
 
 
     // Set up Recents tab
-    PhotoListViewController *fakeRecentsController = [[PhotoListViewController alloc] init];
+    FlickrListViewController *fakeRecentsController = [[FlickrListViewController alloc] init];
     fakeRecentsController.title = @"Flickr Users";
 
 	recentsNavController = [[UINavigationController alloc] initWithRootViewController:fakeRecentsController];

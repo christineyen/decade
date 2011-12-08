@@ -64,6 +64,7 @@
 		97EDC849149039A800DB42D9 /* icon-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 97EDC848149039A800DB42D9 /* icon-arrow.png */; };
 		97EDC84C149039C800DB42D9 /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97EDC84B149039C800DB42D9 /* PullRefreshTableViewController.m */; };
 		97EDC84E149039F500DB42D9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EDC84D149039F500DB42D9 /* QuartzCore.framework */; };
+		97EDC8651490515100DB42D9 /* FlickrListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97EDC8641490515100DB42D9 /* FlickrListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -151,6 +152,8 @@
 		97EDC84A149039C800DB42D9 /* PullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRefreshTableViewController.h; sourceTree = "<group>"; };
 		97EDC84B149039C800DB42D9 /* PullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshTableViewController.m; sourceTree = "<group>"; };
 		97EDC84D149039F500DB42D9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		97EDC8631490515100DB42D9 /* FlickrListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrListViewController.h; sourceTree = "<group>"; };
+		97EDC8641490515100DB42D9 /* FlickrListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,7 +177,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				9700A88C147CC28D008A4843 /* JSON */,
 				971DD231147B8C2600481C51 /* Model */,
 				97E361E0147B5941001FCE37 /* People.xcdatamodeld */,
 				97E361DF147B4644001FCE37 /* Flickr Helpers */,
@@ -301,6 +303,8 @@
 				97EDC80D1487811800DB42D9 /* PhotoMapViewController.h */,
 				97EDC80E1487811800DB42D9 /* PhotoMapViewController.m */,
 				97EDC80F1487811800DB42D9 /* PhotoMapViewController.xib */,
+				97EDC8631490515100DB42D9 /* FlickrListViewController.h */,
+				97EDC8641490515100DB42D9 /* FlickrListViewController.m */,
 			);
 			name = "View Controllers";
 			path = Classes;
@@ -351,6 +355,7 @@
 		97EDC843148F06E500DB42D9 /* External Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				9700A88C147CC28D008A4843 /* JSON */,
 				97EDC84A149039C800DB42D9 /* PullRefreshTableViewController.h */,
 				97EDC84B149039C800DB42D9 /* PullRefreshTableViewController.m */,
 				97EDC840148F06E000DB42D9 /* DSActivityView.h */,
@@ -472,6 +477,7 @@
 				97EDC8101487811800DB42D9 /* PhotoMapViewController.m in Sources */,
 				97EDC842148F06E000DB42D9 /* DSActivityView.m in Sources */,
 				97EDC84C149039C800DB42D9 /* PullRefreshTableViewController.m in Sources */,
+				97EDC8651490515100DB42D9 /* FlickrListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

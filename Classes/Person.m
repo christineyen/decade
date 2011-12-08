@@ -49,6 +49,8 @@
 - (void)fetchMorePhotos {
     FlickrFetcher *fetcher = [FlickrFetcher sharedInstance];
     
+    NSUInteger oldCount = [self.photos count];
+    
     // Fetch items from Flickr, within reason
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSManagedObjectContext *context = [fetcher managedObjectContext];
@@ -56,8 +58,11 @@
     
     // TODO: actually handle errors more gracefully, somewhere
     NSURL *url = [NSURL URLWithString:flickrInterestingUrl];
-    NSString *jsonString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    NSArray *items = [[parser objectWithString:jsonString] objectForKey:@"items"];
+    NSString *jsonString = [NSString stringWithContentsOfURL:url
+                                                    encoding:NSUTF8StringEncoding error:nil];
+    NSError *error = nil;
+    NSArray *items = [[parser objectWithString:jsonString error:&error]
+                      objectForKey:@"items"];
     Photo *photo;
     NSString *flickrUrl;
     
@@ -70,6 +75,14 @@
         flickrUrl = [[photoAttrs objectForKey:@"media"] objectForKey:@"m"];
         photo.url = [flickrUrl stringByReplacingOccurrencesOfString:@"_m.jpg" withString:@"_z.jpg"];
     }
+    
+    NSUInteger newCount = [self.photos count];
+    if (oldCount == newCount) {
+        NSLog(@"ERROR SUSPECTED: %@, %@", error, [error userInfo]);
+    } else {
+        NSLog(@"%d photos pulled from Flickr", newCount - oldCount);
+    }
+    
     [parser release];
     
     [context save:nil];

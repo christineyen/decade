@@ -19,6 +19,7 @@
 
 @interface Person (CoreDataGeneratedAccessors)
 
++ (NSString *)flickrRecentsName;
 + (Person *)flickrRecentsPerson;
 
 - (BOOL)isFlickrUser;
